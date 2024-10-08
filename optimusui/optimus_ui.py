@@ -45,12 +45,18 @@ class MainWindow(Gtk.ApplicationWindow):
         self._build_prime_boot_row(boxed_list)
 
     def _build_gpu_info(self, boxed_list):
-        nvidia_gpus = pci_utils.find_nvidia_gpu()
-        for gpu in nvidia_gpus:
+        all_gpus = pci_utils.find_all_gpus()
+        all_gpu_row = Adw.ExpanderRow()
+        all_gpu_row.set_title(_("Detected Graphic cards"))
+        for gpu in all_gpus:
             gpu_row = Adw.ActionRow()
-            gpu_row.set_title(_("Device"))
+            if gpu.is_nvidia_device():
+                gpu_row.set_title(_("Discrete"))
+            else:
+                gpu_row.set_title(_("Integrated"))
             gpu_row.set_subtitle(gpu.resolve_device_name())
-            boxed_list.append(gpu_row)
+            all_gpu_row.add_row(gpu_row)
+        boxed_list.append(all_gpu_row)
 
     def _build_prime_select_row(self, boxed_list):
         if self.prime_select_row is not None:
