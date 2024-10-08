@@ -23,6 +23,15 @@ def find_nvidia_gpu():
                 nvidia_gpus.append(device_properties)
     return nvidia_gpus
 
+def find_all_gpus():
+    all_gpus = []
+    for subdir, dirs, files in os.walk(PCI_DEVICE_PATH):
+        for device in dirs:
+            device_properties = _build_device_properties(_get_device_info(device))
+            if device_properties.is_gpu():
+                all_gpus.append(device_properties)
+    return all_gpus
+
 def _get_device_info(device):
     device_uevent_result = subprocess.run(["cat", PCI_DEVICE_PATH + device + "/uevent"], stdout=subprocess.PIPE)
     return device_uevent_result.stdout.decode("utf-8").rstrip().split("\n")
