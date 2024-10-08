@@ -210,7 +210,7 @@ class OptimusUI(Adw.Application):
             translator_credits=_("translator-credits"),
             license_type=Gtk.License.MIT_X11,
             website="https://github.com/Z-Ray-Entertainment/optimus-ui",
-            issue_url="https://github.com/Z-Ray-Entertainment/optius-ui/issues",
+            issue_url="https://github.com/Z-Ray-Entertainment/optimus-ui/issues",
             comments=_(
                 "OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
                 "It allows to switch between integrated, dedicated and offloading GPU mode. "
