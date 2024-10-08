@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>de.z_ray.OptimusUI</id>
+    <name>OptimusUI</name>
+    <developer id="de.z_ray">
+        <name>Z-Ray Entertainment</name>
+    </developer>
+    <launchable type="desktop-id">de.z_ray.OptimusUI.desktop</launchable>
+    <branding>
+        <color type="primary" scheme_preference="light">#241f31</color>
+        <color type="primary" scheme_preference="dark">#613583</color>
+    </branding>
+    <summary>Graphical interface for nVidia Optimus Laptops</summary>
+    <description>
+        <p>
+            This is a graphical user interface for Laptops with nVidia Optimus Technology (eg. switchable Graphics).
+        </p>
+        <p>
+            This application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10 series
+            or older as these lack proper power management using the proprietary nvidia driver.
+        </p>
+        <p>
+            It allows the user to select which GPU driver should be used for the entire system. Like running entirely
+            on the iGPU (integrated graphics), entirely on de dGPU (nvidia) or in a hybrid offloading mode where the user
+            can offload certain task to the dGPU.
+        </p>
+        <p>
+            Keep in mind Pascal and older GPUs will not turn off in hybrid mode and still consume power even if they are
+            idle.
+        </p>
+    </description>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>MIT</project_license>
+    <content_rating type="oars-1.1"/>
+    <translation type="gettext">optimusui</translation>
+
+    <screenshots>
+        <screenshot type="default">
+            <caption>Main Window</caption>
+            <image>
+
+            </image>
+        </screenshot>
+    </screenshots>
+
+    <url type="homepage">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
+    <url type="vcs-browser">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
+    <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
+
+    <releases>
+        <release version="24.10" date="2024-10-7">
+            <description>
+                <p>Initial release</p>
+            </description>
+        </release>
+    </releases>
+</component>
