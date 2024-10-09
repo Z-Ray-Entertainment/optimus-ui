@@ -1,6 +1,6 @@
 # OptimusUI
 
-![OptimusUI Icon](https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/d8dbb4fadc9b1eccb1476a3b9613929bd12daf1c/optimusui/data/icons/hicolor/scalable/apps/de.z_ray.OptimusUI.svg)
+![OptimusUI Icon](https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/heads/main/optimusui/data/screenshots/icon_small.png)
 
 OptimusUI is a graphical user interface for prime-select.  
 It allows a Laptop or Desktop system with an integrated GPU and a dedicated GPU to switch between these two. By either
