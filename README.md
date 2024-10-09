@@ -95,3 +95,11 @@ renders them effectively unusable.
 
 Therefore instead of porting an existing application to be a flatpak I just develop my own from scratch with flatpak
 already in mind.
+
+# Tested configurations:
+## openSUSE Aeon (aka. Aeon Desktop or just Aeon)
+Note: This means openSUSE Tumbleweed and Leap should work as well
+- SUSEPrime 0.8.17
+- nVidia driver 470.256.02
+- Intel i5-3230M
+- nVidia GeForce GT 730M
