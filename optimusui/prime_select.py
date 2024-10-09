@@ -32,7 +32,6 @@ def is_device_on(bus_id):
     power_command = ["cat", const.PCI_DEVICE_PATH + bus_id + "/power_state"]
     power_result = os_utils.run_command(power_command)
     d3_state = power_result.stdout.decode("utf-8").rstrip()
-    print(d3_state)
     return d3_state != "D3cold"
 
 
