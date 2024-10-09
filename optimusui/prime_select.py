@@ -67,8 +67,8 @@ def prime_select(mode: PrimeMode, boot: bool):
             prime_command += ["offload"]
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
-    prime_result = os_utils.run_command(prime_command)
-    return prime_result.returncode == 0
+    os_utils.run_command_no_pipe(prime_command)
+    return True
 
 
 def _get_current():

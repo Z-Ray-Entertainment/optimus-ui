@@ -12,6 +12,12 @@ def is_flatpak() -> bool:
     return environ.get("FLATPAK_ID") is not None
 
 
+def run_command_no_pipe(base_command: []):
+    if is_flatpak():
+        return subprocess.run(FLATPAK_SPAWN + base_command)
+    return subprocess.run(base_command)
+
+
 def run_command(base_command: []):
     if is_flatpak():
         return subprocess.run(FLATPAK_SPAWN + base_command, stdout=subprocess.PIPE)
