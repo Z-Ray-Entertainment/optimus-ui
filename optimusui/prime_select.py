@@ -2,7 +2,9 @@ import subprocess
 from enum import Enum
 
 from optimusui import const
-from optimusui.const import PRIME_PATHS
+from optimusui.const import PRIME_PATHS, is_flatpak
+
+prime_path = ""
 
 
 class PrimeMode(Enum):
@@ -13,28 +15,33 @@ class PrimeMode(Enum):
 
 
 def prime_select(mode: PrimeMode):
-    pass
+    _prime_select(mode, False)
 
 
 def prime_boot(mode: PrimeMode):
-    pass
+    _prime_select(mode, True)
 
 
 def get_current():
-    get_currend_cmd = ["pkexec", "prime-select", "get-current"]
-    if const.is_flatpak():
-        get_currend_cmd = ["flatpak-spawn", "--host"] + get_currend_cmd
-    device_uevent_result = subprocess.run(get_currend_cmd, stdout=subprocess.PIPE)
-    return device_uevent_result.stdout.decode("utf-8").rstrip().split("\n")
+    prime_command = [prime_path, "get-current"]
+    if is_flatpak():
+        prime_command = ["flatpak-spawn", "--host"] + prime_command
+    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
+    prime_time = prime_result.stdout.decode("utf-8").rstrip().split("\n")
+    driver = prime_time[0].split(":")
+    print(driver)
+    return _text_to_prime_mode(driver[1].strip())
 
 
 def has_prime_select():
+    global prime_path
     for cur_path in PRIME_PATHS:
         which_cmd = ["test", "-f", cur_path]
         if const.is_flatpak():
             which_cmd = ["flatpak-spawn", "--host"] + which_cmd
         which_result = subprocess.run(which_cmd, stdout=subprocess.PIPE)
         if which_result.returncode == 0:
+            prime_path = cur_path
             print("Which found at: " + cur_path)
             return True
     print("prime-select not found. Searched at: " + str(PRIME_PATHS))
@@ -52,3 +59,37 @@ def has_bbswitch():
         if clean_mod[0] == "bbswitch":
             return True
     return False
+
+
+def _prime_select(mode: PrimeMode, boot: bool):
+    prime_command = ["pkexec", prime_path]
+    if boot:
+        prime_command += ["boot"]
+    if is_flatpak():
+        prime_command = ["flatpak-spawn", "--host"] + prime_command
+
+    # TODO: Add handling for "amd" and "intel2"
+    match mode:
+        case PrimeMode.NVIDIA:
+            prime_command += ["nvidia"]
+        case PrimeMode.OFFLOAD:
+            prime_command += ["offload"]
+        case PrimeMode.INTEGRATED:
+            prime_command += ["intel"]
+    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
+    if prime_result.returncode == 0:
+        pass
+    else:
+        pass
+
+
+def _text_to_prime_mode(text: str) -> PrimeMode:
+    match text:
+        case "intel" | "intel2" | "amd":
+            return PrimeMode.INTEGRATED
+        case "nvidia":
+            return PrimeMode.NVIDIA
+        case "offload":
+            return PrimeMode.OFFLOAD
+        case _:
+            return PrimeMode.NO_DRIVER
