@@ -53,14 +53,15 @@ class MainWindow(Gtk.ApplicationWindow):
         all_gpu_row = Adw.ExpanderRow()
         all_gpu_row.set_title(_("Detected Graphic cards"))
         for gpu in all_gpus:
+            power_state = " (" + _("OFF") + ")"
+            if pci_utils.is_device_on(gpu.pci_slot):
+                power_state = " (" + _("ON") + ")"
+
             gpu_row = Adw.ActionRow()
             if gpu.is_discrete:
-                power_state = " (" + _("OFF") + ")"
-                if prime_select.is_device_on(gpu.pci_slot):
-                    power_state = " (" + _("ON") + ")"
                 gpu_row.set_title(_("Discrete") + power_state)
             else:
-                gpu_row.set_title(_("Integrated"))
+                gpu_row.set_title(_("Integrated") + power_state)
             gpu_row.set_subtitle(gpu.resolve_device_name())
             all_gpu_row.add_row(gpu_row)
         boxed_list.append(all_gpu_row)
