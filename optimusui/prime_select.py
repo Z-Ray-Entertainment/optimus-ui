@@ -14,14 +14,6 @@ class PrimeMode(Enum):
     NO_DRIVER = 3
 
 
-def prime_select(mode: PrimeMode):
-    _prime_select(mode, False)
-
-
-def prime_boot(mode: PrimeMode):
-    _prime_select(mode, True)
-
-
 def get_current():
     prime_command = [prime_path, "get-current"]
     if is_flatpak():
@@ -58,7 +50,7 @@ def has_bbswitch():
     return False
 
 
-def _prime_select(mode: PrimeMode, boot: bool):
+def prime_select(mode: PrimeMode, boot: bool):
     prime_command = ["pkexec", prime_path]
     if boot:
         prime_command += ["boot"]
@@ -74,10 +66,7 @@ def _prime_select(mode: PrimeMode, boot: bool):
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
     prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
-    if prime_result.returncode == 0:
-        pass
-    else:
-        pass
+    return prime_result.returncode == 0
 
 
 def _text_to_prime_mode(text: str) -> PrimeMode:

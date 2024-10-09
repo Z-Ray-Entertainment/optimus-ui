@@ -131,10 +131,10 @@ class MainWindow(Gtk.ApplicationWindow):
             self.do_prime(PrimeMode.INTEGRATED, True)
 
     def do_prime(self, mode: PrimeMode, boot: bool):
-        if boot:
-            prime_select.prime_boot(mode)
+        if prime_select.prime_select(mode, boot):
+            self.show_relog_dialog()
         else:
-            prime_select.prime_select(mode)
+            self.show_prime_error()
 
     def test_system_config(self):
         if not system_validator.is_system_supported():
@@ -152,6 +152,24 @@ class MainWindow(Gtk.ApplicationWindow):
             dialog.connect("response", self.on_response)
             dialog.set_body_use_markup(True)
             dialog.present()
+
+    def show_relog_dialog(self):
+        dialog = Adw.AlertDialog(heading=_("Success"),
+                                 body=_(
+                                     "Driver was changed successfully. Please log out and in again for these changes to take effect."),
+                                 )
+        dialog.add_response("ok", _("Ok"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
+        dialog.present()
+
+    def show_prime_error(self):
+        dialog = Adw.AlertDialog(heading=_("Failed"),
+                                 body=_(
+                                     "The operation has failed. Please check your system logs and report this error."),
+                                 )
+        dialog.add_response("ok", _("Ok"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.present()
 
     def test_bbswitch(self):
         if not prime_select.has_bbswitch():
