@@ -29,7 +29,6 @@ def get_current():
     prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
     prime_time = prime_result.stdout.decode("utf-8").rstrip().split("\n")
     driver = prime_time[0].split(":")
-    print(driver)
     return _text_to_prime_mode(driver[1].strip())
 
 
@@ -42,9 +41,7 @@ def has_prime_select():
         which_result = subprocess.run(which_cmd, stdout=subprocess.PIPE)
         if which_result.returncode == 0:
             prime_path = cur_path
-            print("Which found at: " + cur_path)
             return True
-    print("prime-select not found. Searched at: " + str(PRIME_PATHS))
     return False
 
 

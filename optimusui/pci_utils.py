@@ -10,7 +10,6 @@ def has_nvidia_gpu():
     if len(nvidia_gpus) > 0:
         for gpu in nvidia_gpus:
             device_name = gpu.resolve_device_name()
-            print("nVidia GPU found: " + device_name)
         return True
     return False
 

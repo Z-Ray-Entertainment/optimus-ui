@@ -138,7 +138,6 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def test_system_config(self):
         if not system_validator.is_system_supported():
-            print("System configuration is not supported")
             message_text = ""
             if not prime_select.has_prime_select():
                 message_text += "• " + _(
