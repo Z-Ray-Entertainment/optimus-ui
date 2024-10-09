@@ -1,8 +1,6 @@
-import subprocess
 from enum import Enum
 
-from optimusui import const
-from optimusui.const import PRIME_PATHS, is_flatpak
+from optimusui import const, os_utils
 
 prime_path = ""
 
@@ -16,33 +14,33 @@ class PrimeMode(Enum):
 
 def get_boot():
     prime_command = [prime_path, "get-boot"]
-    if is_flatpak():
-        prime_command = ["flatpak-spawn", "--host"] + prime_command
-    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
+    prime_result = os_utils.run_command(prime_command)
     prime_time = prime_result.stdout.decode("utf-8").rstrip()
     driver = prime_time.split(":")
     return _text_to_prime_mode(driver[1].strip())
 
 
 def get_current():
-    prime_command = [prime_path, "get-current"]
-    if is_flatpak():
-        prime_command = ["flatpak-spawn", "--host"] + prime_command
-    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
-    prime_time = prime_result.stdout.decode("utf-8").rstrip().split("\n")
+    prime_time = _get_current().split("\n")
     driver = prime_time[0].split(":")
     if len(driver) < 2:
         return PrimeMode.NO_DRIVER
     return _text_to_prime_mode(driver[1].strip())
 
 
+def is_device_on(bus_id):
+    power_command = ["cat", const.PCI_DEVICE_PATH + bus_id + "/power_state"]
+    power_result = os_utils.run_command(power_command)
+    d3_state = power_result.stdout.decode("utf-8").rstrip()
+    print(d3_state)
+    return d3_state != "D3cold"
+
+
 def has_prime_select():
     global prime_path
-    for cur_path in PRIME_PATHS:
+    for cur_path in const.PRIME_PATHS:
         which_cmd = ["test", "-f", cur_path]
-        if const.is_flatpak():
-            which_cmd = ["flatpak-spawn", "--host"] + which_cmd
-        which_result = subprocess.run(which_cmd, stdout=subprocess.PIPE)
+        which_result = os_utils.run_command(which_cmd)
         if which_result.returncode == 0:
             prime_path = cur_path
             return True
@@ -51,9 +49,7 @@ def has_prime_select():
 
 def has_bbswitch():
     lsmod_cmd = ["lsmod"]
-    if const.is_flatpak():
-        lsmod_cmd = ["flatpak-spawn", "--host"] + lsmod_cmd
-    bbswtich_result = subprocess.run(lsmod_cmd, stdout=subprocess.PIPE)
+    bbswtich_result = os_utils.run_command(lsmod_cmd)
     all_mods = bbswtich_result.stdout.decode("utf-8").rstrip().split("\n")
     for mod in all_mods:
         clean_mod = " ".join(mod.split()).split(" ")
@@ -66,8 +62,6 @@ def prime_select(mode: PrimeMode, boot: bool):
     prime_command = ["pkexec", prime_path]
     if boot:
         prime_command += ["boot"]
-    if is_flatpak():
-        prime_command = ["flatpak-spawn", "--host"] + prime_command
 
     # TODO: Add handling for "amd" and "intel2"
     match mode:
@@ -77,8 +71,14 @@ def prime_select(mode: PrimeMode, boot: bool):
             prime_command += ["offload"]
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
-    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
+    prime_result = os_utils.run_command(prime_command)
     return prime_result.returncode == 0
+
+
+def _get_current():
+    prime_command = [prime_path, "get-current"]
+    prime_result = os_utils.run_command(prime_command)
+    return prime_result.stdout.decode("utf-8").rstrip()
 
 
 def _text_to_prime_mode(text: str) -> PrimeMode:

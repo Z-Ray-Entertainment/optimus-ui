@@ -21,6 +21,3 @@ PRIME_PATHS = [
     "/bin/" + PRIME_BIN,
     "/sbin/" + PRIME_BIN
 ]
-
-def is_flatpak() -> bool:
-    return environ.get("FLATPAK_ID") is not None

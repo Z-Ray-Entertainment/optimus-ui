@@ -37,7 +37,8 @@ optimus_sources = files([
     'optimus_ui.py',
     'pci_utils.py',
     'prime_select.py',
-    'system_validator.py'
+    'system_validator.py',
+    'os_utils.py'
 ])
 
 install_data(optimus_sources, install_dir: moduledir)
