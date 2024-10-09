@@ -9,11 +9,24 @@ running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 To learn more about prime-select take a look at:
 
 - openSUSE: [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (Supported, Tested)
-- Ubuntu/Debian: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Supported, Untested)
+- Ubuntu/Debian: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Probably supported but
+  untested. The binary name matches the one of SUSEPrime)
 
 Not supported because they lack essential features:
+
 - fedora-prime-select (Fedora)
 - nvidia-prime-select (Arch Linux)
+
+If possible seek an alternative with feature parity to suse-prime or nvidia-prime.
+It needs to support:
+
+- Set which driver should be loaded at boot
+- Change the currently running driver without requiring a full reboot
+- A way to tell the driver which is configured for boot
+- A way to tell the currently loaded driver
+- A way to tell if the nVidia GPU is powered on or off
+
+If there is such a package please file a new issue with the required details.
 
 ![OptimusUI](https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/heads/main/optimusui/data/screenshots/optimus_ui.png)
 
