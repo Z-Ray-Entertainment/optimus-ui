@@ -13,6 +13,8 @@ Not supported because they lack essential features:
 - fedora-prime-select (Fedora)
 - nvidia-prime-select (Arch Linux)
 
+![OptimusUI](https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/heads/main/optimusui/data/screenshots/optimus_ui.png)
+
 ## Requirements
 
 This application aims to be as simple as possible. this also includes it's dependencies.  
