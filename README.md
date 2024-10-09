@@ -96,6 +96,8 @@ renders them effectively unusable.
 Therefore instead of porting an existing application to be a flatpak I just develop my own from scratch with flatpak
 already in mind.
 
+**NOTE:** This application does work outside flatpak in case you want it to be a native package.
+
 # Tested configurations:
 ## openSUSE Aeon (aka. Aeon Desktop or just Aeon)
 Note: This means openSUSE Tumbleweed and Leap should work as well
