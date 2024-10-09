@@ -6,14 +6,12 @@ running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 
 To learn more about prime-select take a look at:
 
-- openSUSE: [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (Supported)
-- Ubuntu/Debian: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Supported)
+- openSUSE: [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (Supported, Tested)
+- Ubuntu/Debian: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Supported, Untested)
 
-Currently not supported because the binary name is different from what OptimusUI expects
-
-- Fedora: [FedoraPrime](https://github.com/bosim/FedoraPrime)
-- Arch Linux: [nvidia-prime-select](https://github.com/wildtruc/nvidia-prime-select) (Note: There are two packages
-  nvidia-prime and nvidia-prime-select (AUR) they are NOT the same!)
+Not supported because they lack essential features:
+- fedora-prime-select (Fedora)
+- nvidia-prime-select (Arch Linux)
 
 ## Requirements
 
