@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from optimusui import const
-from optimusui.const import PCI_DEVICE_PATH, DEVICE_CLASS_GPU, NVIDIA_VENDOR_ID
+from optimusui.const import PCI_DEVICE_PATH
 
 
 def has_nvidia_gpu():
