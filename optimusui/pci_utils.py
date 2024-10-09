@@ -3,6 +3,16 @@ import subprocess
 
 from optimusui import const
 
+'''
+Utility file for various pci related tasks
+Does not use flatpak-spawn as all important pci devices should pre present inside the sandbox
+'''
+
+def is_device_on(bus_id):
+    power_command = ["cat", const.PCI_DEVICE_PATH + bus_id + "/power_state"]
+    power_result = subprocess.run(power_command, stdout=subprocess.PIPE)
+    d3_state = power_result.stdout.decode("utf-8").rstrip()
+    return d3_state != "D3cold"
 
 def has_nvidia_gpu():
     return len(find_nvidia_gpu()) > 0

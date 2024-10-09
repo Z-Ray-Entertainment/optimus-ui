@@ -2,6 +2,10 @@ from enum import Enum
 
 from optimusui import const, os_utils
 
+'''
+Prime Select wrapper
+'''
+
 prime_path = ""
 
 
@@ -26,13 +30,6 @@ def get_current():
     if len(driver) < 2:
         return PrimeMode.NO_DRIVER
     return _text_to_prime_mode(driver[1].strip())
-
-
-def is_device_on(bus_id):
-    power_command = ["cat", const.PCI_DEVICE_PATH + bus_id + "/power_state"]
-    power_result = os_utils.run_command(power_command)
-    d3_state = power_result.stdout.decode("utf-8").rstrip()
-    return d3_state != "D3cold"
 
 
 def has_prime_select():

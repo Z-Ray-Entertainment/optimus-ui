@@ -1,5 +1,9 @@
 from os import environ
 
+'''
+Constants. These should never ever changed unless at build time
+'''
+
 if environ.get("FLATPAK_ID") is not None:
     VERSION = "@VERSION@"
     LOCALE_DIR = "@localedir@"

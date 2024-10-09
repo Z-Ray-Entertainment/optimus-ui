@@ -1,6 +1,10 @@
 import subprocess
 from os import environ
 
+'''
+Various OS and flatpak related utilities
+'''
+
 FLATPAK_SPAWN = ["flatpak-spawn", "--host"]
 
 

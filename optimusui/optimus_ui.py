@@ -7,6 +7,10 @@ from optimusui import const
 from optimusui import system_validator
 from optimusui.prime_select import PrimeMode
 
+'''
+Main UI
+'''
+
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Gtk, Adw, Gio
