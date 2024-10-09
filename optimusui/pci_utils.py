@@ -2,7 +2,6 @@ import os
 import subprocess
 
 from optimusui import const
-from optimusui.const import PCI_DEVICE_PATH
 
 
 def has_nvidia_gpu():
@@ -11,7 +10,7 @@ def has_nvidia_gpu():
 
 def find_nvidia_gpu():
     nvidia_gpus = []
-    for subdir, dirs, files in os.walk(PCI_DEVICE_PATH):
+    for subdir, dirs, files in os.walk(const.PCI_DEVICE_PATH):
         for device in dirs:
             device_properties = _build_device_properties(_get_device_info(device))
             if device_properties.is_nvidia_device() and device_properties.is_gpu():
@@ -21,7 +20,7 @@ def find_nvidia_gpu():
 
 def find_all_gpus():
     all_gpus = []
-    for subdir, dirs, files in os.walk(PCI_DEVICE_PATH):
+    for subdir, dirs, files in os.walk(const.PCI_DEVICE_PATH):
         for device in dirs:
             device_properties = _build_device_properties(_get_device_info(device))
             if device_properties.is_gpu():
@@ -30,7 +29,7 @@ def find_all_gpus():
 
 
 def _get_device_info(device):
-    device_uevent_result = subprocess.run(["cat", PCI_DEVICE_PATH + device + "/uevent"], stdout=subprocess.PIPE)
+    device_uevent_result = subprocess.run(["cat", const.PCI_DEVICE_PATH + device + "/uevent"], stdout=subprocess.PIPE)
     return device_uevent_result.stdout.decode("utf-8").rstrip().split("\n")
 
 
@@ -59,6 +58,7 @@ class DeviceProperties:
         self.device_id = device_id
         self.vendor_id = vendor_id
         self.pci_slot = pci_slot
+        self.is_discrete = pci_class == const.DEVICE_CLASS_GPU[1]
 
     def is_nvidia_device(self):
         return self.vendor_id == const.NVIDIA_VENDOR_ID

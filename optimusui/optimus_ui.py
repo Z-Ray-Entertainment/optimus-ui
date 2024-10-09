@@ -50,7 +50,7 @@ class MainWindow(Gtk.ApplicationWindow):
         all_gpu_row.set_title(_("Detected Graphic cards"))
         for gpu in all_gpus:
             gpu_row = Adw.ActionRow()
-            if gpu.is_nvidia_device():
+            if gpu.is_discrete:
                 gpu_row.set_title(_("Discrete"))
             else:
                 gpu_row.set_title(_("Integrated"))
