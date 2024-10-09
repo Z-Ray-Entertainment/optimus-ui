@@ -14,6 +14,16 @@ class PrimeMode(Enum):
     NO_DRIVER = 3
 
 
+def get_boot():
+    prime_command = [prime_path, "get-boot"]
+    if is_flatpak():
+        prime_command = ["flatpak-spawn", "--host"] + prime_command
+    prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
+    prime_time = prime_result.stdout.decode("utf-8").rstrip()
+    driver = prime_time.split(":")
+    return _text_to_prime_mode(driver[1].strip())
+
+
 def get_current():
     prime_command = [prime_path, "get-current"]
     if is_flatpak():
