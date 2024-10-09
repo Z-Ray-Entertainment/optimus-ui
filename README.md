@@ -24,7 +24,6 @@ It needs to support:
 - Change the currently running driver without requiring a full reboot
 - A way to tell the driver which is configured for boot
 - A way to tell the currently loaded driver
-- A way to tell if the nVidia GPU is powered on or off
 
 If there is such a package please file a new issue with the required details.
 
