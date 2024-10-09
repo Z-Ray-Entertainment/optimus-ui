@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=OptimusUI
-Exec=optimusui
+Exec=optimus-ui
 Type=Application
 Icon=de.z_ray.OptimusUI
 Categories=Utility;
