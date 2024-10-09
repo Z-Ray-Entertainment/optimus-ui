@@ -42,10 +42,13 @@ def has_prime_select():
 
 
 def has_bbswitch():
-    lsmod_cmd = ["lsmod", "|", "grep", "-i", "bbswitch"]
+    lsmod_cmd = ["lsmod"]
     if const.is_flatpak():
         lsmod_cmd = ["flatpak-spawn", "--host"] + lsmod_cmd
     bbswtich_result = subprocess.run(lsmod_cmd, stdout=subprocess.PIPE)
-    lsmod = bbswtich_result.stdout.decode("utf-8").rstrip()
-    print(lsmod)
-    return len(lsmod) != 0
+    all_mods = bbswtich_result.stdout.decode("utf-8").rstrip().split("\n")
+    for mod in all_mods:
+        clean_mod = " ".join(mod.split()).split(" ")
+        if clean_mod[0] == "bbswitch":
+            return True
+    return False
