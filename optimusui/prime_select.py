@@ -31,6 +31,8 @@ def get_current():
     prime_result = subprocess.run(prime_command, stdout=subprocess.PIPE)
     prime_time = prime_result.stdout.decode("utf-8").rstrip().split("\n")
     driver = prime_time[0].split(":")
+    if len(driver) < 2:
+        return PrimeMode.NO_DRIVER
     return _text_to_prime_mode(driver[1].strip())
 
 
