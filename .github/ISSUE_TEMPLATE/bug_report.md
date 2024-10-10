@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+**NOTE:** Please take a look at the [FAQ](https://github.com/Z-Ray-Entertainment/optimus-ui/wiki/FAQ) before opening up a bug report
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
