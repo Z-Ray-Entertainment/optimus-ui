@@ -39,14 +39,51 @@ class MainWindow(Gtk.ApplicationWindow):
         self.main_box.set_margin_bottom(10)
         self.set_child(self.main_box)
 
+        self._build_prime_toggles(self.main_box)
+
         boxed_list = Gtk.ListBox()
         boxed_list.set_selection_mode(Gtk.SelectionMode.NONE)
         boxed_list.add_css_class("boxed-list")
         self.main_box.append(boxed_list)
 
         self._build_gpu_info(boxed_list)
-        self._build_prime_select_row(boxed_list)
         self._build_prime_boot_row(boxed_list)
+
+    def _build_prime_toggles(self, main_box):
+        prime_mode: PrimeMode = prime_select.get_current()
+
+        toggle_section = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        main_box.append(toggle_section)
+
+        toggle_preference_group = Adw.PreferencesGroup()
+        toggle_preference_group.set_title(_("Runtime"))
+        toggle_preference_group.set_description(_("Prime mode to be used while system is running"))
+        toggle_section.append(toggle_preference_group)
+
+        toggle_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        toggle_box.set_halign(Gtk.Align.CENTER)
+        toggle_preference_group.add(toggle_box)
+
+        toggle_nvidia = Gtk.ToggleButton(label="nVidia", active=prime_mode == PrimeMode.NVIDIA)
+        toggle_nvidia.set_group(toggle_nvidia)
+        if toggle_nvidia.get_active():
+            toggle_nvidia.add_css_class("suggested-action")
+        toggle_nvidia.connect("toggled", self.on_toggle_nvidia)
+        toggle_box.append(toggle_nvidia)
+
+        toggle_offload = Gtk.ToggleButton(label="Offload", active=prime_mode == PrimeMode.OFFLOAD)
+        toggle_offload.set_group(toggle_nvidia)
+        if toggle_offload.get_active():
+            toggle_offload.add_css_class("suggested-action")
+        toggle_offload.connect("toggled", self.on_toggle_offload)
+        toggle_box.append(toggle_offload)
+
+        toggle_integrated = Gtk.ToggleButton(label=_("Integrated"), active=prime_mode == PrimeMode.INTEGRATED)
+        toggle_integrated.set_group(toggle_nvidia)
+        if toggle_integrated.get_active():
+            toggle_integrated.add_css_class("suggested-action")
+        toggle_integrated.connect("toggled", self.on_toggle_integrated)
+        toggle_box.append(toggle_integrated)
 
     def _build_gpu_info(self, boxed_list):
         all_gpus = pci_utils.find_all_gpus()
@@ -66,42 +103,26 @@ class MainWindow(Gtk.ApplicationWindow):
             all_gpu_row.add_row(gpu_row)
         boxed_list.append(all_gpu_row)
 
-    def _build_prime_select_row(self, boxed_list):
-        prime_mode: PrimeMode = prime_select.get_current()
-
-        if self.prime_select_row is not None:
-            boxed_list.remove(self.prime_select_row)
-        self.prime_select_row = Adw.ActionRow()
-        self.prime_select_row.set_title("Runtime")
-        self.prime_select_row.set_subtitle(_("Select runtime GPU mode:"))
-        boxed_list.append(self.prime_select_row)
-
-        radio_nvidia = Gtk.CheckButton(label="nVidia", active=prime_mode == PrimeMode.NVIDIA)
-        radio_nvidia.set_group(radio_nvidia)
-        radio_nvidia.connect("toggled", self.on_toggle_nvidia)
-        self.prime_select_row.add_suffix(radio_nvidia)
-
-        radio_offload = Gtk.CheckButton(label="Offload", active=prime_mode == PrimeMode.OFFLOAD)
-        radio_offload.set_group(radio_nvidia)
-        radio_offload.connect("toggled", self.on_toggle_offload)
-        self.prime_select_row.add_suffix(radio_offload)
-
-        radio_integrated = Gtk.CheckButton(label="Integrated", active=prime_mode == PrimeMode.INTEGRATED)
-        radio_integrated.set_group(radio_nvidia)
-        radio_integrated.connect("toggled", self.on_toggle_integrated)
-        self.prime_select_row.add_suffix(radio_integrated)
-
     def on_toggle_nvidia(self, toggle):
         if toggle.get_active():
+            toggle.add_css_class("suggested-action")
             self.do_prime(PrimeMode.NVIDIA, False)
+        else:
+            toggle.remove_css_class("suggested-action")
 
     def on_toggle_offload(self, toggle):
         if toggle.get_active():
+            toggle.add_css_class("suggested-action")
             self.do_prime(PrimeMode.OFFLOAD, False)
+        else:
+            toggle.remove_css_class("suggested-action")
 
     def on_toggle_integrated(self, toggle):
         if toggle.get_active():
+            toggle.add_css_class("suggested-action")
             self.do_prime(PrimeMode.INTEGRATED, False)
+        else:
+            toggle.remove_css_class("suggested-action")
 
     def _build_prime_boot_row(self, boxed_list):
         prime_mode: PrimeMode = prime_select.get_boot()
