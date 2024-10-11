@@ -40,6 +40,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.set_child(self.main_box)
 
         self._build_prime_toggles(self.main_box)
+        self._build_system_pref_group(self.main_box)
 
         boxed_list = Gtk.ListBox()
         boxed_list.set_selection_mode(Gtk.SelectionMode.NONE)
@@ -47,7 +48,27 @@ class MainWindow(Gtk.ApplicationWindow):
         self.main_box.append(boxed_list)
 
         self._build_gpu_info(boxed_list)
-        self._build_prime_boot_row(boxed_list)
+
+    def _build_system_pref_group(self, main_box):
+        settings_preference_group = Adw.PreferencesGroup()
+        settings_preference_group.set_title(_("System"))
+        settings_preference_group.set_description(_("Various system settings"))
+        main_box.append(settings_preference_group)
+        self._build_boot_settings(settings_preference_group)
+
+    def _build_boot_settings(self, preference_group):
+        prime_mode: PrimeMode = prime_select.get_boot()
+
+        boot_row = Adw.ComboRow(title=_("Boot"), subtitle=_("Set prime mode to be applied at boot"))
+        preference_group.add(boot_row)
+        boot_string_list = Gtk.StringList()
+        # Note: Order is important
+        boot_string_list.append(_("nVidia"))
+        boot_string_list.append(_("Offload"))
+        boot_string_list.append(_("Integrated"))
+        boot_row.set_model(boot_string_list)
+        boot_row.set_selected(prime_mode.value)
+        boot_row.connect("notify::selected-item", self._on_select_boot_mode)
 
     def _build_prime_toggles(self, main_box):
         prime_mode: PrimeMode = prime_select.get_current()
@@ -103,6 +124,15 @@ class MainWindow(Gtk.ApplicationWindow):
             all_gpu_row.add_row(gpu_row)
         boxed_list.append(all_gpu_row)
 
+    def _on_select_boot_mode(self, widget, _a):
+        match widget.get_selected():
+            case 0:
+                self.do_prime(PrimeMode.NVIDIA, True)
+            case 1:
+                self.do_prime(PrimeMode.OFFLOAD, True)
+            case 2:
+                self.do_prime(PrimeMode.INTEGRATED, True)
+
     def on_toggle_nvidia(self, toggle):
         if toggle.get_active():
             toggle.add_css_class("suggested-action")
@@ -123,31 +153,6 @@ class MainWindow(Gtk.ApplicationWindow):
             self.do_prime(PrimeMode.INTEGRATED, False)
         else:
             toggle.remove_css_class("suggested-action")
-
-    def _build_prime_boot_row(self, boxed_list):
-        prime_mode: PrimeMode = prime_select.get_boot()
-
-        if self.prime_boot_row is not None:
-            boxed_list.remove(self.prime_boot_row)
-        self.prime_boot_row = Adw.ActionRow()
-        self.prime_boot_row.set_title("Boot")
-        self.prime_boot_row.set_subtitle(_("Select GPU at boot:"))
-        boxed_list.append(self.prime_boot_row)
-
-        radio_nvidia = Gtk.CheckButton(label="nVidia", active=prime_mode == PrimeMode.NVIDIA)
-        radio_nvidia.set_group(radio_nvidia)
-        radio_nvidia.connect("toggled", self.on_toggle_nvidia_boot)
-        self.prime_boot_row.add_suffix(radio_nvidia)
-
-        radio_offload = Gtk.CheckButton(label="Offload", active=prime_mode == PrimeMode.OFFLOAD)
-        radio_offload.set_group(radio_nvidia)
-        radio_offload.connect("toggled", self.on_toggle_offload_boot)
-        self.prime_boot_row.add_suffix(radio_offload)
-
-        radio_integrated = Gtk.CheckButton(label="Integrated", active=prime_mode == PrimeMode.INTEGRATED)
-        radio_integrated.set_group(radio_nvidia)
-        radio_integrated.connect("toggled", self.on_toggle_integrated_boot)
-        self.prime_boot_row.add_suffix(radio_integrated)
 
     def on_toggle_nvidia_boot(self, toggle):
         if toggle.get_active():
