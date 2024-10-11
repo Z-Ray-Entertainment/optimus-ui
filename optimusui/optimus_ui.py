@@ -42,19 +42,13 @@ class MainWindow(Gtk.ApplicationWindow):
         self._build_prime_toggles(self.main_box)
         self._build_system_pref_group(self.main_box)
 
-        boxed_list = Gtk.ListBox()
-        boxed_list.set_selection_mode(Gtk.SelectionMode.NONE)
-        boxed_list.add_css_class("boxed-list")
-        self.main_box.append(boxed_list)
-
-        self._build_gpu_info(boxed_list)
-
     def _build_system_pref_group(self, main_box):
         settings_preference_group = Adw.PreferencesGroup()
         settings_preference_group.set_title(_("System"))
         settings_preference_group.set_description(_("Various system settings"))
         main_box.append(settings_preference_group)
         self._build_boot_settings(settings_preference_group)
+        self._build_gpu_info(settings_preference_group)
 
     def _build_boot_settings(self, preference_group):
         prime_mode: PrimeMode = prime_select.get_boot()
@@ -106,7 +100,7 @@ class MainWindow(Gtk.ApplicationWindow):
         toggle_integrated.connect("toggled", self.on_toggle_integrated)
         toggle_box.append(toggle_integrated)
 
-    def _build_gpu_info(self, boxed_list):
+    def _build_gpu_info(self, preference_group):
         all_gpus = pci_utils.find_all_gpus()
         all_gpu_row = Adw.ExpanderRow()
         all_gpu_row.set_title(_("Detected Graphic cards"))
@@ -122,7 +116,7 @@ class MainWindow(Gtk.ApplicationWindow):
                 gpu_row.set_title(_("Integrated") + power_state)
             gpu_row.set_subtitle(gpu.resolve_device_name())
             all_gpu_row.add_row(gpu_row)
-        boxed_list.append(all_gpu_row)
+        preference_group.add(all_gpu_row)
 
     def _on_select_boot_mode(self, widget, _a):
         match widget.get_selected():
