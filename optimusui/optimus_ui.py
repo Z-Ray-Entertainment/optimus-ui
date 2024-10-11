@@ -85,14 +85,14 @@ class MainWindow(Gtk.ApplicationWindow):
         toggle_box.set_halign(Gtk.Align.CENTER)
         toggle_preference_group.add(toggle_box)
 
-        toggle_nvidia = Gtk.ToggleButton(label="nVidia", active=prime_mode == PrimeMode.NVIDIA)
+        toggle_nvidia = Gtk.ToggleButton(label=_("nVidia"), active=prime_mode == PrimeMode.NVIDIA)
         toggle_nvidia.set_group(toggle_nvidia)
         if toggle_nvidia.get_active():
             toggle_nvidia.add_css_class("suggested-action")
         toggle_nvidia.connect("toggled", self.on_toggle_nvidia)
         toggle_box.append(toggle_nvidia)
 
-        toggle_offload = Gtk.ToggleButton(label="Offload", active=prime_mode == PrimeMode.OFFLOAD)
+        toggle_offload = Gtk.ToggleButton(label=_("Offload"), active=prime_mode == PrimeMode.OFFLOAD)
         toggle_offload.set_group(toggle_nvidia)
         if toggle_offload.get_active():
             toggle_offload.add_css_class("suggested-action")
