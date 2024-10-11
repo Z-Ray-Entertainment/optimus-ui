@@ -44,11 +44,11 @@ def has_prime_select():
 
 
 def has_bbswitch():
-    lsmod_cmd = ["lsmod"]
-    bbswtich_result = os_utils.run_command(lsmod_cmd)
-    all_mods = bbswtich_result.stdout.decode("utf-8").rstrip().split("\n")
+    loaded_mods = ["cat", "/proc/modules"]
+    loaded_mods_result = os_utils.run_command(loaded_mods)
+    all_mods = loaded_mods_result.stdout.decode("utf-8").rstrip().split("\n")
     for mod in all_mods:
-        clean_mod = " ".join(mod.split()).split(" ")
+        clean_mod = mod.split(" ")
         if clean_mod[0] == "bbswitch":
             return True
     return False
