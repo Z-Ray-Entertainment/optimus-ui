@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-11 19:44+0200\n"
+"PO-Revision-Date: 2024-10-11 19:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: optimusui/optimus_ui.py:47
+msgid "System"
+msgstr "System"
+
+#: optimusui/optimus_ui.py:48
+msgid "Various system settings"
+msgstr "Verschiedene Systemeinstellungen"
+
+#: optimusui/optimus_ui.py:56
+msgid "Boot"
+msgstr "Boot"
+
+#: optimusui/optimus_ui.py:56
+msgid "Set prime mode to be applied at boot"
+msgstr "Prime Modus der beim Systemstart angewendet werden soll"
+
+#: optimusui/optimus_ui.py:60 optimusui/optimus_ui.py:82
+msgid "nVidia"
+msgstr "nVidia"
+
+#: optimusui/optimus_ui.py:61 optimusui/optimus_ui.py:89
+msgid "Offload"
+msgstr "Offload"
+
+#: optimusui/optimus_ui.py:62 optimusui/optimus_ui.py:96
+#: optimusui/optimus_ui.py:116
+msgid "Integrated"
+msgstr "Integriert"
+
+#: optimusui/optimus_ui.py:74
+msgid "Runtime"
+msgstr "Laufzeit"
+
+#: optimusui/optimus_ui.py:75
+msgid "Prime mode to be used while system is running"
+msgstr "Prime Modus der während Laufzeit des Systems genutzt werden soll"
+
+#: optimusui/optimus_ui.py:106
+msgid "Detected Graphic cards"
+msgstr "Erkannte Grafikkarten"
+
+#: optimusui/optimus_ui.py:108
+msgid "OFF"
+msgstr "AUS"
+
+#: optimusui/optimus_ui.py:110
+msgid "ON"
+msgstr "AN"
+
+#: optimusui/optimus_ui.py:114
+msgid "Discrete"
+msgstr "Diskret"
+
+#: optimusui/optimus_ui.py:165
+msgid ""
+"prime-select not found, please install it per your distributions "
+"documentation"
+msgstr ""
+"prime-select nicht gefunden, bitte installieren Sie das Paket für Ihre "
+"Distribution"
+
+#: optimusui/optimus_ui.py:167
+msgid "This systems seems not to have a supported nVidia GPU installed"
+msgstr "Dieses System scheint keine unterstüzte nVidia Grafikkarte zu besitzen"
+
+#: optimusui/optimus_ui.py:168
+msgid "System not supported"
+msgstr "System nicht unterstützt"
+
+#: optimusui/optimus_ui.py:178 optimusui/optimus_ui.py:187
+msgid "Success"
+msgstr "Erfolgreich"
+
+#: optimusui/optimus_ui.py:180
+msgid ""
+"Driver was changed successfully. Please log out and in again for these "
+"changes to take effect."
+msgstr ""
+"Treiber wurde erfolgreich gewechselt. Bitte Loggen Sie sich aus und wieder "
+"ein, damit die Änderungen übernommen werden können."
+
+#: optimusui/optimus_ui.py:182 optimusui/optimus_ui.py:191
+#: optimusui/optimus_ui.py:200 optimusui/optimus_ui.py:209
+msgid "Ok"
+msgstr "Okay"
+
+#: optimusui/optimus_ui.py:189
+msgid ""
+"Driver was changed successfully. The new prime mode will be applied on every "
+"boot."
+msgstr ""
+"Treiber erfolgreich gewechselt. Der neue Prime Modus wird bei jedem "
+"Systemstart angewendet."
+
+#: optimusui/optimus_ui.py:196
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: optimusui/optimus_ui.py:198
+msgid ""
+"The operation has failed. Please check your system logs and report this "
+"error."
+msgstr ""
+"Die Operation ist fehlgeschlagen. Bitte prüfen Sie die Systemprotokolle und "
+"erstellen Sie einen Fehlerbericht."
+
+#: optimusui/optimus_ui.py:206
+msgid "bbswitch not found"
+msgstr "bbswitch konnte nicht gefunden werden"
+
+#: optimusui/optimus_ui.py:207
+msgid "Power management might not work as bbswitch was not found."
+msgstr ""
+"Das Energiemanagement könnte möglicherweise beeinträchtigt sein, da bbswitch "
+"nicht gefunden werden konnte."
+
+#: optimusui/optimus_ui.py:222
+msgid "About"
+msgstr "Über"
+
+#: optimusui/optimus_ui.py:265
+msgid "translator-credits"
+msgstr "Vortex Acherontic"
+
+#: optimusui/optimus_ui.py:270
+msgid ""
+"OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
+"It allows to switch between integrated, dedicated and offloading GPU mode. "
+"prime-select needs to be installed on the host system and is not shipped by "
+"this application!"
+msgstr ""
+"OptimusUI ist eine Benutzeroberfläche für prime-select auf nVidia Optimus "
+"Laptops. Es ermöglicht das Wechseln zwischen dem integrierten, dedizierten "
+"und ausgelagerten Grafikkarten Modus. prime-select muss auf den Zielsystem "
+"installiert sein und wird nicht von dieser Anwendung bereitgestellt!"

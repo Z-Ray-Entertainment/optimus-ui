@@ -16,6 +16,6 @@ install_data(desktop_file, install_dir: join_paths(get_option('datadir'), 'appli
 subdir('optimusui')
 
 gnome.post_install(
-    #gtk_update_icon_cache: true,
-    #update_desktop_database: true,
+    gtk_update_icon_cache: true,
+    update_desktop_database: true,
 )
