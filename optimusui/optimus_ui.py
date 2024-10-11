@@ -154,18 +154,6 @@ class MainWindow(Gtk.ApplicationWindow):
         else:
             toggle.remove_css_class("suggested-action")
 
-    def on_toggle_nvidia_boot(self, toggle):
-        if toggle.get_active():
-            self.do_prime(PrimeMode.NVIDIA, True)
-
-    def on_toggle_offload_boot(self, toggle):
-        if toggle.get_active():
-            self.do_prime(PrimeMode.OFFLOAD, True)
-
-    def on_toggle_integrated_boot(self, toggle):
-        if toggle.get_active():
-            self.do_prime(PrimeMode.INTEGRATED, True)
-
     def do_prime(self, mode: PrimeMode, boot: bool):
         if prime_select.prime_select(mode, boot):
             if boot:
