@@ -168,7 +168,10 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def do_prime(self, mode: PrimeMode, boot: bool):
         if prime_select.prime_select(mode, boot):
-            self.show_relog_dialog()
+            if boot:
+                self.show_reboot_dialog()
+            else:
+                self.show_relog_dialog()
         else:
             self.show_prime_error()
 
@@ -193,6 +196,15 @@ class MainWindow(Gtk.ApplicationWindow):
         dialog = Adw.AlertDialog(heading=_("Success"),
                                  body=_(
                                      "Driver was changed successfully. Please log out and in again for these changes to take effect."),
+                                 )
+        dialog.add_response("ok", _("Ok"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
+        dialog.present()
+
+    def show_reboot_dialog(self):
+        dialog = Adw.AlertDialog(heading=_("Success"),
+                                 body=_(
+                                     "Driver was changed successfully. The new prime mode will be applied on every boot."),
                                  )
         dialog.add_response("ok", _("Ok"))
         dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
