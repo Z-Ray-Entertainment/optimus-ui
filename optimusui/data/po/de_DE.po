@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 19:44+0200\n"
-"PO-Revision-Date: 2024-10-11 19:56+0200\n"
+"PO-Revision-Date: 2024-10-11 20:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -32,7 +32,7 @@ msgstr "Boot"
 
 #: optimusui/optimus_ui.py:56
 msgid "Set prime mode to be applied at boot"
-msgstr "Prime Modus der beim Systemstart angewendet werden soll"
+msgstr "Prime Modus der bei jedem Systemstart angewendet werden soll"
 
 #: optimusui/optimus_ui.py:60 optimusui/optimus_ui.py:82
 msgid "nVidia"
@@ -53,7 +53,7 @@ msgstr "Laufzeit"
 
 #: optimusui/optimus_ui.py:75
 msgid "Prime mode to be used while system is running"
-msgstr "Prime Modus der während Laufzeit des Systems genutzt werden soll"
+msgstr "Prime Modus der zur Laufzeit des Systems genutzt werden soll"
 
 #: optimusui/optimus_ui.py:106
 msgid "Detected Graphic cards"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: optimusui/optimus_ui.py:167
 msgid "This systems seems not to have a supported nVidia GPU installed"
-msgstr "Dieses System scheint keine unterstüzte nVidia Grafikkarte zu besitzen"
+msgstr "Dieses System scheint keine unterstütze nVidia Grafikkarte zu besitzen"
 
 #: optimusui/optimus_ui.py:168
 msgid "System not supported"
@@ -140,7 +140,7 @@ msgstr "Über"
 
 #: optimusui/optimus_ui.py:265
 msgid "translator-credits"
-msgstr "Vortex Acherontic"
+msgstr "Vortex Acherontic https://github.com/VortexAcherontic"
 
 #: optimusui/optimus_ui.py:270
 msgid ""
@@ -149,7 +149,8 @@ msgid ""
 "prime-select needs to be installed on the host system and is not shipped by "
 "this application!"
 msgstr ""
-"OptimusUI ist eine Benutzeroberfläche für prime-select auf nVidia Optimus "
-"Laptops. Es ermöglicht das Wechseln zwischen dem integrierten, dedizierten "
-"und ausgelagerten Grafikkarten Modus. prime-select muss auf den Zielsystem "
-"installiert sein und wird nicht von dieser Anwendung bereitgestellt!"
+"OptimusUI ist eine Benutzeroberfläche für prime-select das auf nVidia "
+"Optimus Laptops genutzt werden kann. Es ermöglicht das Wechseln zwischen dem "
+"integrierten, dedizierten und ausgelagerten Grafikkarten Modus. prime-select "
+"muss auf den Zielsystem installiert sein und wird nicht von dieser Anwendung "
+"bereitgestellt!"
