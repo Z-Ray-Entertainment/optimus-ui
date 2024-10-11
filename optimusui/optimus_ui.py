@@ -172,7 +172,7 @@ class MainWindow(Gtk.ApplicationWindow):
             dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
             dialog.connect("response", self.on_response)
             dialog.set_body_use_markup(True)
-            dialog.present()
+            dialog.present(self)
 
     def show_relog_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Success"),
@@ -181,7 +181,7 @@ class MainWindow(Gtk.ApplicationWindow):
                                  )
         dialog.add_response("ok", _("Ok"))
         dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
-        dialog.present()
+        dialog.present(self)
 
     def show_reboot_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Success"),
@@ -190,7 +190,7 @@ class MainWindow(Gtk.ApplicationWindow):
                                  )
         dialog.add_response("ok", _("Ok"))
         dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
-        dialog.present()
+        dialog.present(self)
 
     def show_prime_error(self):
         dialog = Adw.AlertDialog(heading=_("Failed"),
@@ -199,7 +199,7 @@ class MainWindow(Gtk.ApplicationWindow):
                                  )
         dialog.add_response("ok", _("Ok"))
         dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.present()
+        dialog.present(self)
 
     def test_bbswitch(self):
         if not prime_select.has_bbswitch():
@@ -208,7 +208,7 @@ class MainWindow(Gtk.ApplicationWindow):
                                      )
             dialog.add_response("ok", _("Ok"))
             dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
-            dialog.present()
+            dialog.present(self)
 
     def on_response(self, dialog, response):
         exit(1)
