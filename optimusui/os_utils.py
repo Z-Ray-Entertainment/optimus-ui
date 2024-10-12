@@ -64,3 +64,10 @@ def get_distro() -> Distribution:
                         return Distribution.UBUNTU
                 return Distribution.DEBIAN
     return Distribution.UNKNOWN
+
+def is_distro_supported():
+    detected_distro = get_distro()
+    match detected_distro:
+        case Distribution.SUSE | Distribution.UBUNTU:
+            return True
+    return False

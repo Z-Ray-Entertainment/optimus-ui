@@ -166,6 +166,8 @@ class MainWindow(Gtk.ApplicationWindow):
                     "prime-select not found, please install it per your distributions documentation") + "\n"
             if not pci_utils.has_nvidia_gpu():
                 message_text += "• " + _("This systems seems not to have a supported nVidia GPU installed")
+            if not os_utils.is_distro_supported():
+                message_text += "• " + _("Your distribution is not supported")
             dialog = Adw.AlertDialog(heading=_("System not supported"),
                                      body=message_text,
                                      )
