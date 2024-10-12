@@ -25,7 +25,6 @@ def get_boot():
 
 
 def get_current():
-
     match os_utils.get_distro():
         case os_utils.Distribution.SUSE:
             prime_time = _get_current().split("\n")
@@ -85,10 +84,12 @@ def prime_select(mode: PrimeMode, boot: bool):
 
 
 def _get_current():
-    prime_command = [prime_path, "get-current"]
+    prime_command = [prime_path]
     match os_utils.get_distro():
         case os_utils.Distribution.UBUNTU:
-            prime_command = [prime_path, "query"]
+            prime_command += ["query"]
+        case os_utils.Distribution.SUSE:
+            prime_command += ["get-current"]
     prime_result = os_utils.run_command(prime_command)
     return prime_result.stdout.decode("utf-8").rstrip()
 
