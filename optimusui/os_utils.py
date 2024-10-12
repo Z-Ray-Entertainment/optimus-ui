@@ -1,4 +1,5 @@
 import subprocess
+from enum import Enum
 from os import environ
 
 '''
@@ -6,6 +7,13 @@ Various OS and flatpak related utilities
 '''
 
 FLATPAK_SPAWN = ["flatpak-spawn", "--host"]
+
+
+class Distribution(Enum):
+    UNKNOWN = -1
+    SUSE = 0
+    UBUNTU = 1
+
 
 def is_flatpak() -> bool:
     """
@@ -32,3 +40,23 @@ def run_command(base_command: []):
     if is_flatpak():
         return subprocess.run(FLATPAK_SPAWN + base_command, stdout=subprocess.PIPE)
     return subprocess.run(base_command, stdout=subprocess.PIPE)
+
+
+def get_distro() -> Distribution:
+    """
+    Test the running Linux distribution to guess which prime-select package might be installed
+    """
+    os_release_cmd = ["cat", "/etc/os-release"]
+    os_release_result = run_command(os_release_cmd)
+    os_release_dict = {}
+    for line in os_release_result.stdout.decode("utf-8").rstrip().split("\n"):
+        column = line.split("=")
+        if len(column) == 2:
+            os_release_dict[column[0]] = column[1].replace("\"", "")
+    print(os_release_dict["ID"])
+    match os_release_dict["ID"]:
+        case "opensuse-tumbleweed":
+            return Distribution.SUSE
+        case "ubuntu":
+            return Distribution.UBUNTU
+    return Distribution.UNKNOWN
