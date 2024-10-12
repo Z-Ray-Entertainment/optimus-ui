@@ -71,7 +71,13 @@ def prime_select(mode: PrimeMode, boot: bool):
         case PrimeMode.NVIDIA:
             prime_command += ["nvidia"]
         case PrimeMode.OFFLOAD:
-            prime_command += ["offload"]
+            match os_utils.get_distro():
+                case os_utils.Distribution.SUSE:
+                    prime_command += ["offload"]
+                case os_utils.Distribution.UBUNTU:
+                    prime_command += ["on-demand"]
+                case os_utils.Distribution.UNKNOWN:
+                    prime_command += ["offload"]
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
     os_utils.run_command_no_pipe(prime_command)
