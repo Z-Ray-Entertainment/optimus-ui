@@ -13,6 +13,7 @@ class Distribution(Enum):
     UNKNOWN = -1
     SUSE = 0
     UBUNTU = 1
+    DEBIAN = 2
 
 
 def is_flatpak() -> bool:
@@ -57,6 +58,9 @@ def get_distro() -> Distribution:
         match id_like:
             case "opensuse" | "suse":
                 return Distribution.SUSE
-            case "ubuntu":
-                return Distribution.UBUNTU
+            case "debian":
+                match os_release_dict["ID"]:
+                    case "ubuntu":
+                        return Distribution.UBUNTU
+                return Distribution.DEBIAN
     return Distribution.UNKNOWN
