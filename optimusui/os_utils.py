@@ -53,10 +53,10 @@ def get_distro() -> Distribution:
         column = line.split("=")
         if len(column) == 2:
             os_release_dict[column[0]] = column[1].replace("\"", "")
-    print(os_release_dict["ID"])
-    match os_release_dict["ID"]:
-        case "opensuse-tumbleweed":
-            return Distribution.SUSE
-        case "ubuntu":
-            return Distribution.UBUNTU
+    for id_like in os_release_dict["ID_LIKE"].split(" "):
+        match id_like:
+            case "opensuse" | "suse":
+                return Distribution.SUSE
+            case "ubuntu":
+                return Distribution.UBUNTU
     return Distribution.UNKNOWN
