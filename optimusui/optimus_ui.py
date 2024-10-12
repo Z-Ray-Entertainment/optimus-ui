@@ -2,7 +2,7 @@ import gettext
 
 import gi
 
-from optimusui import prime_select, pci_utils
+from optimusui import prime_select, pci_utils, os_utils
 from optimusui import const
 from optimusui import system_validator
 from optimusui.prime_select import PrimeMode
@@ -47,7 +47,8 @@ class MainWindow(Gtk.ApplicationWindow):
         settings_preference_group.set_title(_("System"))
         settings_preference_group.set_description(_("Various system settings"))
         main_box.append(settings_preference_group)
-        self._build_boot_settings(settings_preference_group)
+        if os_utils.get_distro() == os_utils.Distribution.SUSE:
+            self._build_boot_settings(settings_preference_group)
         self._build_gpu_info(settings_preference_group)
 
     def _build_boot_settings(self, preference_group):
