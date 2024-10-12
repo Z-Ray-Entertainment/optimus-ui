@@ -7,10 +7,13 @@ It allows a Laptop or Desktop system with an integrated GPU and a dedicated GPU 
 running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 
 ## Supported Prime Tools
+
 - openSUSE [SUSEPrime](https://github.com/openSUSE/SUSEPrime)
+- Ubuntu: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Supported but lacks some features
+  which means some option are not available)
 
 ## Work in progress Prime Tools:
-- Ubuntu/Debian: [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/)
+
 - fedora-prime-select (Fedora)
 - nvidia-prime-select (Arch Linux)
 
