@@ -25,11 +25,18 @@ def get_boot():
 
 
 def get_current():
-    prime_time = _get_current().split("\n")
-    driver = prime_time[0].split(":")
-    if len(driver) < 2:
-        return PrimeMode.NO_DRIVER
-    return _text_to_prime_mode(driver[1].strip())
+
+    match os_utils.get_distro():
+        case os_utils.Distribution.SUSE:
+            prime_time = _get_current().split("\n")
+            if len(prime_time) < 2:
+                return PrimeMode.NO_DRIVER
+            driver = prime_time[0].split(":")
+            return _text_to_prime_mode(driver[1].strip())
+        case os_utils.Distribution.UBUNTU:
+            prime_time = _get_current()
+            return _text_to_prime_mode(prime_time)
+    return PrimeMode.NO_DRIVER
 
 
 def has_prime_select():
@@ -73,6 +80,9 @@ def prime_select(mode: PrimeMode, boot: bool):
 
 def _get_current():
     prime_command = [prime_path, "get-current"]
+    match os_utils.get_distro():
+        case os_utils.Distribution.UBUNTU:
+            prime_command = [prime_path, "query"]
     prime_result = os_utils.run_command(prime_command)
     return prime_result.stdout.decode("utf-8").rstrip()
 
@@ -83,7 +93,7 @@ def _text_to_prime_mode(text: str) -> PrimeMode:
             return PrimeMode.INTEGRATED
         case "nvidia":
             return PrimeMode.NVIDIA
-        case "offload":
+        case "offload" | "on-demand":
             return PrimeMode.OFFLOAD
         case _:
             return PrimeMode.NO_DRIVER
