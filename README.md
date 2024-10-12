@@ -19,6 +19,11 @@ running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 - fedora-prime-select (Fedora)
 - nvidia-prime-select (Arch Linux)
 
+## Unsupported distributions
+
+### Debian
+
+Debian has not nvidia-prime, suse-prime or prime-select like package which can be supported by this application
 
 ## Requirements
 
