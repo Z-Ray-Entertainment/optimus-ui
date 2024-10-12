@@ -36,8 +36,11 @@ The following needs to be present on the target system:
 - bbswitch (Recommended but not required)
 
 # Tested configurations:
+
 ## openSUSE Aeon (aka. Aeon Desktop or just Aeon)
+
 Note: This means openSUSE Tumbleweed and Leap should work as well
+
 - SUSEPrime 0.8.17
 - nVidia driver 470.256.02
 - Intel i5-3230M
