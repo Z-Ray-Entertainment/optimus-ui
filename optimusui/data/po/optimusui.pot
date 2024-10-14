@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 19:44+0200\n"
+"POT-Creation-Date: 2024-10-14 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,113 +25,119 @@ msgstr ""
 msgid "Various system settings"
 msgstr ""
 
-#: optimusui/optimus_ui.py:56
+#: optimusui/optimus_ui.py:57
 msgid "Boot"
 msgstr ""
 
-#: optimusui/optimus_ui.py:56
+#: optimusui/optimus_ui.py:57
 msgid "Set prime mode to be applied at boot"
 msgstr ""
 
-#: optimusui/optimus_ui.py:60 optimusui/optimus_ui.py:82
+#: optimusui/optimus_ui.py:61 optimusui/optimus_ui.py:83
 msgid "nVidia"
 msgstr ""
 
-#: optimusui/optimus_ui.py:61 optimusui/optimus_ui.py:89
+#: optimusui/optimus_ui.py:62 optimusui/optimus_ui.py:90
 msgid "Offload"
 msgstr ""
 
-#: optimusui/optimus_ui.py:62 optimusui/optimus_ui.py:96
-#: optimusui/optimus_ui.py:116
+#: optimusui/optimus_ui.py:63 optimusui/optimus_ui.py:97
+#: optimusui/optimus_ui.py:117
 msgid "Integrated"
 msgstr ""
 
-#: optimusui/optimus_ui.py:74
+#: optimusui/optimus_ui.py:75
 msgid "Runtime"
 msgstr ""
 
-#: optimusui/optimus_ui.py:75
+#: optimusui/optimus_ui.py:76
 msgid "Prime mode to be used while system is running"
 msgstr ""
 
-#: optimusui/optimus_ui.py:106
+#: optimusui/optimus_ui.py:107
 msgid "Detected Graphic cards"
 msgstr ""
 
-#: optimusui/optimus_ui.py:108
+#: optimusui/optimus_ui.py:109
 msgid "OFF"
 msgstr ""
 
-#: optimusui/optimus_ui.py:110
+#: optimusui/optimus_ui.py:111
 msgid "ON"
 msgstr ""
 
-#: optimusui/optimus_ui.py:114
+#: optimusui/optimus_ui.py:115
 msgid "Discrete"
 msgstr ""
 
-#: optimusui/optimus_ui.py:165
+#: optimusui/optimus_ui.py:166
 msgid ""
 "prime-select not found, please install it per your distributions "
 "documentation"
 msgstr ""
 
-#: optimusui/optimus_ui.py:167
+#: optimusui/optimus_ui.py:168
 msgid "This systems seems not to have a supported nVidia GPU installed"
 msgstr ""
 
-#: optimusui/optimus_ui.py:168
+#: optimusui/optimus_ui.py:170
+msgid "Your distribution is not supported"
+msgstr ""
+
+#: optimusui/optimus_ui.py:171
 msgid "System not supported"
 msgstr ""
 
-#: optimusui/optimus_ui.py:178 optimusui/optimus_ui.py:187
+#: optimusui/optimus_ui.py:181 optimusui/optimus_ui.py:190
 msgid "Success"
 msgstr ""
 
-#: optimusui/optimus_ui.py:180
+#: optimusui/optimus_ui.py:183
 msgid ""
 "Driver was changed successfully. Please log out and in again for these "
 "changes to take effect."
 msgstr ""
 
-#: optimusui/optimus_ui.py:182 optimusui/optimus_ui.py:191
-#: optimusui/optimus_ui.py:200 optimusui/optimus_ui.py:209
+#: optimusui/optimus_ui.py:185 optimusui/optimus_ui.py:194
+#: optimusui/optimus_ui.py:203 optimusui/optimus_ui.py:213
 msgid "Ok"
 msgstr ""
 
-#: optimusui/optimus_ui.py:189
+#: optimusui/optimus_ui.py:192
 msgid ""
 "Driver was changed successfully. The new prime mode will be applied on every "
 "boot."
 msgstr ""
 
-#: optimusui/optimus_ui.py:196
+#: optimusui/optimus_ui.py:199
 msgid "Failed"
 msgstr ""
 
-#: optimusui/optimus_ui.py:198
+#: optimusui/optimus_ui.py:201
 msgid ""
 "The operation has failed. Please check your system logs and report this "
 "error."
 msgstr ""
 
-#: optimusui/optimus_ui.py:206
+#: optimusui/optimus_ui.py:209
 msgid "bbswitch not found"
 msgstr ""
 
-#: optimusui/optimus_ui.py:207
-msgid "Power management might not work as bbswitch was not found."
+#: optimusui/optimus_ui.py:211
+msgid ""
+"Advanced power management might not work as bbswitch was not found. The "
+"discrete GPU will probably stay on."
 msgstr ""
 
-#: optimusui/optimus_ui.py:222
+#: optimusui/optimus_ui.py:226
 msgid "About"
 msgstr ""
 
-#: optimusui/optimus_ui.py:265
+#: optimusui/optimus_ui.py:269
 msgid "translator-credits"
 msgstr ""
 
-#: optimusui/optimus_ui.py:270
+#: optimusui/optimus_ui.py:274
 msgid ""
 "OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
 "It allows to switch between integrated, dedicated and offloading GPU mode. "
