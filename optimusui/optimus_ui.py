@@ -205,9 +205,10 @@ class MainWindow(Gtk.ApplicationWindow):
         dialog.present(self)
 
     def test_bbswitch(self):
-        if not prime_select.has_bbswitch():
+        if prime_select.get_current() is prime_select.PrimeMode.INTEGRATED and not prime_select.has_bbswitch():
             dialog = Adw.AlertDialog(heading=_("bbswitch not found"),
-                                     body=_("Power management might not work as bbswitch was not found."),
+                                     body=_(
+                                         "Advanced power management might not work as bbswitch was not found. The discrete GPU will probably stay on."),
                                      )
             dialog.add_response("ok", _("Ok"))
             dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
