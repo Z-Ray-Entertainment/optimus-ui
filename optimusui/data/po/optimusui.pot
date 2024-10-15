@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 21:01+0200\n"
+"POT-Creation-Date: 2024-10-15 19:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,127 +17,148 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: optimusui/optimus_ui.py:47
+#: optimusui/optimus_ui.py:52
 msgid "System"
 msgstr ""
 
-#: optimusui/optimus_ui.py:48
+#: optimusui/optimus_ui.py:53
 msgid "Various system settings"
 msgstr ""
 
-#: optimusui/optimus_ui.py:57
+#: optimusui/optimus_ui.py:62
 msgid "Boot"
 msgstr ""
 
-#: optimusui/optimus_ui.py:57
+#: optimusui/optimus_ui.py:62
 msgid "Set prime mode to be applied at boot"
 msgstr ""
 
-#: optimusui/optimus_ui.py:61 optimusui/optimus_ui.py:83
+#: optimusui/optimus_ui.py:66 optimusui/optimus_ui.py:88
 msgid "nVidia"
 msgstr ""
 
-#: optimusui/optimus_ui.py:62 optimusui/optimus_ui.py:90
+#: optimusui/optimus_ui.py:67 optimusui/optimus_ui.py:95
 msgid "Offload"
 msgstr ""
 
-#: optimusui/optimus_ui.py:63 optimusui/optimus_ui.py:97
-#: optimusui/optimus_ui.py:117
+#: optimusui/optimus_ui.py:68 optimusui/optimus_ui.py:102
+#: optimusui/optimus_ui.py:122
 msgid "Integrated"
 msgstr ""
 
-#: optimusui/optimus_ui.py:75
+#: optimusui/optimus_ui.py:80
 msgid "Runtime"
 msgstr ""
 
-#: optimusui/optimus_ui.py:76
+#: optimusui/optimus_ui.py:81
 msgid "Prime mode to be used while system is running"
 msgstr ""
 
-#: optimusui/optimus_ui.py:107
+#: optimusui/optimus_ui.py:112
 msgid "Detected Graphic cards"
 msgstr ""
 
-#: optimusui/optimus_ui.py:109
+#: optimusui/optimus_ui.py:114
 msgid "OFF"
 msgstr ""
 
-#: optimusui/optimus_ui.py:111
+#: optimusui/optimus_ui.py:116
 msgid "ON"
 msgstr ""
 
-#: optimusui/optimus_ui.py:115
+#: optimusui/optimus_ui.py:120
 msgid "Discrete"
 msgstr ""
 
-#: optimusui/optimus_ui.py:166
+#: optimusui/optimus_ui.py:180
 msgid ""
 "prime-select not found, please install it per your distributions "
 "documentation"
 msgstr ""
 
-#: optimusui/optimus_ui.py:168
+#: optimusui/optimus_ui.py:182
 msgid "This systems seems not to have a supported nVidia GPU installed"
 msgstr ""
 
-#: optimusui/optimus_ui.py:170
-msgid "Your distribution is not supported"
-msgstr ""
-
-#: optimusui/optimus_ui.py:171
+#: optimusui/optimus_ui.py:183
 msgid "System not supported"
 msgstr ""
 
-#: optimusui/optimus_ui.py:181 optimusui/optimus_ui.py:190
+#: optimusui/optimus_ui.py:193
+msgid "Notice"
+msgstr ""
+
+#: optimusui/optimus_ui.py:195
+msgid ""
+"There is no known prime tool for this distribution. OptimusUI will operate "
+"on best guess."
+msgstr ""
+
+#: optimusui/optimus_ui.py:196
+msgid "Feel free to open up an issue for us to add support for this system."
+msgstr ""
+
+#: optimusui/optimus_ui.py:198 optimusui/optimus_ui.py:207
+#: optimusui/optimus_ui.py:216 optimusui/optimus_ui.py:230
+#: optimusui/optimus_ui.py:239 optimusui/optimus_ui.py:249
+msgid "Ok"
+msgstr ""
+
+#: optimusui/optimus_ui.py:203 optimusui/optimus_ui.py:226
 msgid "Success"
 msgstr ""
 
-#: optimusui/optimus_ui.py:183
+#: optimusui/optimus_ui.py:205
 msgid ""
 "Driver was changed successfully. Please log out and in again for these "
 "changes to take effect."
 msgstr ""
 
-#: optimusui/optimus_ui.py:185 optimusui/optimus_ui.py:194
-#: optimusui/optimus_ui.py:203 optimusui/optimus_ui.py:213
-msgid "Ok"
+#: optimusui/optimus_ui.py:212
+msgid "Attention"
 msgstr ""
 
-#: optimusui/optimus_ui.py:192
+#: optimusui/optimus_ui.py:214
+msgid ""
+"The system was detected to run on Wayland. Running fully on nVidia is only "
+"supported on X11. Make sure to select X11 as display server while loging in."
+msgstr ""
+
+#: optimusui/optimus_ui.py:228
 msgid ""
 "Driver was changed successfully. The new prime mode will be applied on every "
 "boot."
 msgstr ""
 
-#: optimusui/optimus_ui.py:199
+#: optimusui/optimus_ui.py:235
 msgid "Failed"
 msgstr ""
 
-#: optimusui/optimus_ui.py:201
+#: optimusui/optimus_ui.py:237
 msgid ""
 "The operation has failed. Please check your system logs and report this "
 "error."
 msgstr ""
 
-#: optimusui/optimus_ui.py:209
+#: optimusui/optimus_ui.py:245
 msgid "bbswitch not found"
 msgstr ""
 
-#: optimusui/optimus_ui.py:211
+#: optimusui/optimus_ui.py:247
 msgid ""
 "Advanced power management might not work as bbswitch was not found. The "
 "discrete GPU will probably stay on."
 msgstr ""
 
-#: optimusui/optimus_ui.py:226
+#: optimusui/optimus_ui.py:262
 msgid "About"
 msgstr ""
 
-#: optimusui/optimus_ui.py:269
+#: optimusui/optimus_ui.py:305
 msgid "translator-credits"
 msgstr ""
 
-#: optimusui/optimus_ui.py:274
+#: optimusui/optimus_ui.py:310
 msgid ""
 "OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
 "It allows to switch between integrated, dedicated and offloading GPU mode. "
