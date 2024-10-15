@@ -17,6 +17,9 @@ from gi.repository import Gtk, Adw, Gio
 
 gettext.install('optimusui', const.LOCALE_DIR)
 
+mem_prime_mode = prime_select.PrimeMode.NO_DRIVER
+mem_prime_boot = False
+
 
 class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
@@ -150,6 +153,15 @@ class MainWindow(Gtk.ApplicationWindow):
             toggle.remove_css_class("suggested-action")
 
     def do_prime(self, mode: PrimeMode, boot: bool):
+        global mem_prime_mode, mem_prime_boot
+        if mode == prime_select.PrimeMode.NVIDIA and os_utils.get_display_server() == os_utils.DisplayServer.WAYLAND:
+            mem_prime_boot = boot
+            mem_prime_mode = mode
+            self.show_wayland_warning(mode, boot)
+        else:
+            self._do_prime(mode, boot)
+
+    def _do_prime(self, mode: PrimeMode, boot: bool):
         if prime_select.prime_select(mode, boot):
             if boot:
                 self.show_reboot_dialog()
@@ -185,6 +197,20 @@ class MainWindow(Gtk.ApplicationWindow):
         dialog.add_response("ok", _("Ok"))
         dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
         dialog.present(self)
+
+    def show_wayland_warning(self, prime_mode: prime_select.PrimeMode, boot: bool):
+        dialog = Adw.AlertDialog(heading=_("Attention"),
+                                 body=_(
+                                     "The system was detected to run on Wayland. Running fully on nVidia is only supported on X11. Make sure to select X11 as display server while loging in."),
+                                 )
+        dialog.add_response("ok", _("Ok"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", self.confirm_wayland_warning)
+        dialog.present(self)
+
+    def confirm_wayland_warning(self, dialog, response):
+        global mem_prime_mode, mem_prime_boot
+        self._do_prime(mem_prime_mode, mem_prime_boot)
 
     def show_reboot_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Success"),

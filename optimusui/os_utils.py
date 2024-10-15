@@ -15,6 +15,19 @@ class Distribution(Enum):
     UBUNTU = 1
     DEBIAN = 2
 
+class DisplayServer(Enum):
+    UNKNOWN = -1
+    X11 = 0
+    WAYLAND = 1
+
+def get_display_server() -> DisplayServer:
+    xdg_session = environ.get("XDG_SESSION_TYPE")
+    match xdg_session:
+        case "x11":
+            return DisplayServer.X11
+        case "wayland":
+            return DisplayServer.WAYLAND
+    return DisplayServer.UNKNOWN
 
 def is_flatpak() -> bool:
     """
