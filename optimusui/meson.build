@@ -38,7 +38,8 @@ optimus_sources = files([
     'pci_utils.py',
     'prime_select.py',
     'system_validator.py',
-    'os_utils.py'
+    'os_utils.py',
+    'bbswitch.py'
 ])
 
 install_data(optimus_sources, install_dir: moduledir)

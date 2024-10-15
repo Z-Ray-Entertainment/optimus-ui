@@ -2,8 +2,8 @@ import gettext
 
 import gi
 
-from optimusui import prime_select, pci_utils, os_utils
 from optimusui import const
+from optimusui import prime_select, pci_utils, os_utils, bbswitch
 from optimusui import system_validator
 from optimusui.prime_select import PrimeMode
 
@@ -241,7 +241,7 @@ class MainWindow(Gtk.ApplicationWindow):
         dialog.present(self)
 
     def test_bbswitch(self):
-        if prime_select.get_current() is prime_select.PrimeMode.INTEGRATED and not prime_select.has_bbswitch():
+        if prime_select.get_current() is prime_select.PrimeMode.INTEGRATED and not bbswitch.has_bbswitch():
             dialog = Adw.AlertDialog(heading=_("bbswitch not found"),
                                      body=_(
                                          "Advanced power management might not work as bbswitch was not found. The discrete GPU will probably stay on."),
