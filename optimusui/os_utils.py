@@ -88,7 +88,7 @@ def get_distro() -> Distribution:
     return Distribution.UNKNOWN
 
 
-def is_distro_supported():
+def is_distro_known():
     """
     Effectively checks if the system is Debian as this is the only (known) Distribution
     to not have a prime-select like package

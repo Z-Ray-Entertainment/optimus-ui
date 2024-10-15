@@ -33,6 +33,8 @@ class MainWindow(Gtk.ApplicationWindow):
             self.prime_boot_row = None
             self.build_ui()
             self.test_bbswitch()
+            if not os_utils.is_distro_known():
+                self.show_best_guess_dialog()
 
     def build_ui(self):
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -178,8 +180,6 @@ class MainWindow(Gtk.ApplicationWindow):
                     "prime-select not found, please install it per your distributions documentation") + "\n"
             if not pci_utils.has_nvidia_gpu():
                 message_text += "• " + _("This systems seems not to have a supported nVidia GPU installed")
-            if not os_utils.is_distro_supported():
-                message_text += "• " + _("Your distribution is not supported")
             dialog = Adw.AlertDialog(heading=_("System not supported"),
                                      body=message_text,
                                      )
@@ -188,6 +188,15 @@ class MainWindow(Gtk.ApplicationWindow):
             dialog.connect("response", self.on_response)
             dialog.set_body_use_markup(True)
             dialog.present(self)
+
+    def show_best_guess_dialog(self):
+        dialog = Adw.AlertDialog(heading=_("Notice"),
+                                 body=_(
+                                     "There is no known prime tool for this distribution. Will operate on best guess."),
+                                 )
+        dialog.add_response("ok", _("Ok"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
+        dialog.present(self)
 
     def show_relog_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Success"),
