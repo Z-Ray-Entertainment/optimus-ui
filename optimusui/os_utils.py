@@ -55,11 +55,11 @@ def run_command_no_pipe(base_command: []):
 
 
 def run_command_as_root_no_pipe(base_commad: []):
-    run_command_no_pipe(["pkexec"] + base_commad)
+    return run_command_no_pipe(["pkexec"] + base_commad)
 
 
 def run_command_as_root(base_commad: []):
-    run_command(["pkexec"] + base_commad)
+    return run_command(["pkexec"] + base_commad)
 
 
 def run_command(base_command: []):
@@ -68,6 +68,7 @@ def run_command(base_command: []):
     If the app is running inside flatpak it will use flatpak-spawn
     """
     if is_flatpak():
+        print(base_command)
         return subprocess.run(FLATPAK_SPAWN + base_command, stdout=subprocess.PIPE)
     return subprocess.run(base_command, stdout=subprocess.PIPE)
 
