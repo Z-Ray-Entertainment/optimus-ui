@@ -66,7 +66,8 @@ def run_command(base_command: []):
 
 def get_distro() -> Distribution:
     """
-    Test the running Linux distribution to guess which prime-select package might be installed
+    Test the running Linux distribution.
+    This is used later to guess which prime-select like package might be installed
     """
     os_release_cmd = ["cat", "/etc/os-release"]
     os_release_result = run_command(os_release_cmd)
