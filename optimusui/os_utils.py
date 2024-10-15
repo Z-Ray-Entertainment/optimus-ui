@@ -15,12 +15,19 @@ class Distribution(Enum):
     UBUNTU = 1
     DEBIAN = 2
 
+
 class DisplayServer(Enum):
     UNKNOWN = -1
     X11 = 0
     WAYLAND = 1
 
+
 def get_display_server() -> DisplayServer:
+    """
+    Checks the currently running display server
+    :return:
+    display server enum
+    """
     xdg_session = environ.get("XDG_SESSION_TYPE")
     match xdg_session:
         case "x11":
@@ -28,6 +35,7 @@ def get_display_server() -> DisplayServer:
         case "wayland":
             return DisplayServer.WAYLAND
     return DisplayServer.UNKNOWN
+
 
 def is_flatpak() -> bool:
     """
@@ -78,7 +86,14 @@ def get_distro() -> Distribution:
                 return Distribution.DEBIAN
     return Distribution.UNKNOWN
 
+
 def is_distro_supported():
+    """
+    Effectively checks if the system is Debian as this is the only (known) Distribution
+    to not have a prime-select like package
+    :return:
+    If distro is supported or not
+    """
     detected_distro = get_distro()
     match detected_distro:
         case Distribution.SUSE | Distribution.UBUNTU:
