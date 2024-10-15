@@ -1,8 +1,6 @@
 """
 Helper file to work with bbswitch
 """
-from enum import Enum
-
 from optimusui import os_utils
 
 
