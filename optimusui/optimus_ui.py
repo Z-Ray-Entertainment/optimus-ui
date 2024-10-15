@@ -192,7 +192,7 @@ class MainWindow(Gtk.ApplicationWindow):
     def show_best_guess_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Notice"),
                                  body=_(
-                                     "There is no known prime tool for this distribution. Will operate on best guess.")
+                                     "There is no known prime tool for this distribution. OptimusUI will operate on best guess.")
                                       + "\n" + _("Feel free to open up an issue for us to add support for this system."),
                                  )
         dialog.add_response("ok", _("Ok"))
