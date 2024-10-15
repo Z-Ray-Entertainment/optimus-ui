@@ -50,7 +50,7 @@ def has_prime_select():
 
 
 def prime_select(mode: PrimeMode, boot: bool):
-    prime_command = ["pkexec", prime_path]
+    prime_command = [prime_path]
     if boot:
         prime_command += ["boot"]
 
@@ -68,7 +68,7 @@ def prime_select(mode: PrimeMode, boot: bool):
                     prime_command += ["offload"]
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
-    os_utils.run_command_no_pipe(prime_command)
+    os_utils.run_command_as_root_no_pipe(prime_command)
     return True
 
 

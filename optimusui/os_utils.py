@@ -54,6 +54,14 @@ def run_command_no_pipe(base_command: []):
     return subprocess.run(base_command)
 
 
+def run_command_as_root_no_pipe(base_commad: []):
+    run_command_no_pipe(["pkexec"] + base_commad)
+
+
+def run_command_as_root(base_commad: []):
+    run_command(["pkexec"] + base_commad)
+
+
 def run_command(base_command: []):
     """
     Runs a given array as a subprocess and returns the result.
