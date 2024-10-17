@@ -6,6 +6,14 @@ from optimusui import const, os_utils
 Prime Select wrapper
 '''
 
+PRIME_BINS = ["prime-select", "fedora-prime-select"]
+PRIME_ROOT_PATHS = [
+    "/usr/bin/",
+    "/usr/sbin/",
+    "/bin/",
+    "/sbin/"
+]
+
 prime_path = ""
 
 
@@ -40,12 +48,14 @@ def get_current():
 
 def has_prime_select():
     global prime_path
-    for cur_path in const.PRIME_PATHS:
-        which_cmd = ["test", "-f", cur_path]
-        which_result = os_utils.run_command(which_cmd)
-        if which_result.returncode == 0:
-            prime_path = cur_path
-            return True
+    for root_path in PRIME_ROOT_PATHS:
+        for prime_tool in PRIME_BINS:
+            prime_path_full = root_path + prime_tool
+            which_cmd = ["test", "-f", prime_path_full]
+            which_result = os_utils.run_command(which_cmd)
+            if which_result.returncode == 0:
+                prime_path = prime_path_full
+                return True
     return False
 
 
