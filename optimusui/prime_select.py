@@ -15,6 +15,7 @@ PRIME_ROOT_PATHS = [
 ]
 
 prime_path = ""
+prime_features = []
 
 
 class PrimeMode(Enum):
@@ -22,6 +23,12 @@ class PrimeMode(Enum):
     OFFLOAD = 1
     INTEGRATED = 2
     NO_DRIVER = 3
+
+
+class PrimeFeature(Enum):
+    SET_BOOT = 0
+    SET_RUNTIME = 1
+    SET_OFFLOAD = 2
 
 
 def get_boot():
@@ -55,6 +62,7 @@ def has_prime_select():
             which_result = os_utils.run_command(which_cmd)
             if which_result.returncode == 0:
                 prime_path = prime_path_full
+                _build_features(prime_tool, os_utils.get_distro())
                 return True
     return False
 
@@ -80,6 +88,25 @@ def prime_select(mode: PrimeMode, boot: bool):
             prime_command += ["intel"]
     os_utils.run_command_as_root_no_pipe(prime_command)
     return True
+
+def has_feature(feature: PrimeFeature):
+    global prime_features
+    return feature in prime_features
+
+def _build_features(prime_tool: str, distro: os_utils.Distribution):
+    global prime_features
+    match prime_tool:
+        case "prime-select":
+            match distro:
+                case os_utils.Distribution.SUSE:
+                    prime_features.append(PrimeFeature.SET_BOOT)
+                    prime_features.append(PrimeFeature.SET_OFFLOAD)
+                    prime_features.append(PrimeFeature.SET_RUNTIME)
+                case os_utils.Distribution.DEBIAN:
+                    prime_features.append(PrimeFeature.SET_OFFLOAD)
+                    prime_features.append(PrimeFeature.SET_RUNTIME)
+        case "fedora-prime-select":
+            prime_features.append(PrimeFeature.SET_RUNTIME)
 
 
 def _get_current():

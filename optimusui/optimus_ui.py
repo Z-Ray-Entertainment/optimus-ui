@@ -50,7 +50,7 @@ class MainWindow(Gtk.ApplicationWindow):
         settings_preference_group.set_title(_("System"))
         settings_preference_group.set_description(_("Various system settings"))
         main_box.append(settings_preference_group)
-        if os_utils.get_distro() == os_utils.Distribution.SUSE:
+        if prime_select.has_feature(prime_select.PrimeFeature.SET_BOOT):
             self._build_boot_settings(settings_preference_group)
         self._build_gpu_info(settings_preference_group)
 
@@ -90,7 +90,7 @@ class MainWindow(Gtk.ApplicationWindow):
         toggle_nvidia.connect("toggled", self.on_toggle_nvidia)
         toggle_box.append(toggle_nvidia)
 
-        if os_utils.get_distro() != os_utils.Distribution.FEDORA:
+        if prime_select.has_feature(prime_select.PrimeFeature.SET_OFFLOAD):
             toggle_offload = Gtk.ToggleButton(label=_("Offload"), active=prime_mode == PrimeMode.OFFLOAD)
             toggle_offload.set_group(toggle_nvidia)
             if toggle_offload.get_active():
