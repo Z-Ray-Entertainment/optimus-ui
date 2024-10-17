@@ -99,17 +99,3 @@ def get_distro() -> Distribution:
             case "debian":
                 return Distribution.DEBIAN
     return Distribution.UNKNOWN
-
-
-def is_distro_known():
-    """
-    Effectively checks if the system is Debian as this is the only (known) Distribution
-    to not have a prime-select like package
-    :return:
-    If distro is supported or not
-    """
-    detected_distro = get_distro()
-    match detected_distro:
-        case Distribution.SUSE | Distribution.UBUNTU:
-            return True
-    return False

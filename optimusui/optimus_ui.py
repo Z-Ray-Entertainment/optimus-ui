@@ -33,8 +33,6 @@ class MainWindow(Gtk.ApplicationWindow):
             self.prime_boot_row = None
             self.build_ui()
             self.test_bbswitch()
-            if not os_utils.is_distro_known():
-                self.show_best_guess_dialog()
 
     def build_ui(self):
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -188,16 +186,6 @@ class MainWindow(Gtk.ApplicationWindow):
             dialog.connect("response", self.on_response)
             dialog.set_body_use_markup(True)
             dialog.present(self)
-
-    def show_best_guess_dialog(self):
-        dialog = Adw.AlertDialog(heading=_("Notice"),
-                                 body=_(
-                                     "There is no known prime tool for this distribution. OptimusUI will operate on best guess.")
-                                      + "\n" + _("Feel free to open up an issue for us to add support for this system."),
-                                 )
-        dialog.add_response("ok", _("Ok"))
-        dialog.set_response_appearance("ok", Adw.ResponseAppearance.SUGGESTED)
-        dialog.present(self)
 
     def show_relog_dialog(self):
         dialog = Adw.AlertDialog(heading=_("Success"),
