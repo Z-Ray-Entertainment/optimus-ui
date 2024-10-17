@@ -40,7 +40,7 @@ def get_current():
                 return PrimeMode.NO_DRIVER
             driver = prime_time[0].split(":")
             return _text_to_prime_mode(driver[1].strip())
-        case os_utils.Distribution.UBUNTU:
+        case os_utils.Distribution.DEBIAN:
             prime_time = _get_current()
             return _text_to_prime_mode(prime_time)
     return PrimeMode.NO_DRIVER
@@ -72,7 +72,7 @@ def prime_select(mode: PrimeMode, boot: bool):
             match os_utils.get_distro():
                 case os_utils.Distribution.SUSE:
                     prime_command += ["offload"]
-                case os_utils.Distribution.UBUNTU:
+                case os_utils.Distribution.DEBIAN:
                     prime_command += ["on-demand"]
                 case os_utils.Distribution.UNKNOWN:
                     prime_command += ["offload"]
@@ -85,7 +85,7 @@ def prime_select(mode: PrimeMode, boot: bool):
 def _get_current():
     prime_command = [prime_path]
     match os_utils.get_distro():
-        case os_utils.Distribution.UBUNTU:
+        case os_utils.Distribution.DEBIAN:
             prime_command += ["query"]
         case os_utils.Distribution.SUSE:
             prime_command += ["get-current"]

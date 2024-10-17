@@ -8,7 +8,6 @@ Various OS and flatpak related utilities
 
 FLATPAK_SPAWN = ["flatpak-spawn", "--host"]
 
-
 class Distribution(Enum):
     UNKNOWN = -1
     SUSE = 0
@@ -21,6 +20,7 @@ class DisplayServer(Enum):
     X11 = 0
     WAYLAND = 1
 
+detected_distro = Distribution.UNKNOWN
 
 def get_display_server() -> DisplayServer:
     """
@@ -78,6 +78,9 @@ def get_distro() -> Distribution:
     Test the running Linux distribution.
     This is used later to guess which prime-select like package might be installed
     """
+    global detected_distro
+    if detected_distro != Distribution.UNKNOWN:
+        return detected_distro
     os_release_cmd = ["cat", "/etc/os-release"]
     os_release_result = run_command(os_release_cmd)
     os_release_dict = {}
@@ -89,13 +92,13 @@ def get_distro() -> Distribution:
         for id_like in os_release_dict["ID_LIKE"].split(" "):
             match id_like:
                 case "opensuse" | "suse":
-                    return Distribution.SUSE
+                    detected_distro = Distribution.SUSE
                 case "debian":
-                    return Distribution.DEBIAN
+                    detected_distro = Distribution.DEBIAN
     else:
         match os_release_dict["ID"]:
             case "fedora":
-                return Distribution.FEDORA
+                detected_distro = Distribution.FEDORA
             case "debian":
-                return Distribution.DEBIAN
-    return Distribution.UNKNOWN
+                detected_distro = Distribution.DEBIAN
+    return detected_distro
