@@ -93,7 +93,7 @@ def get_distro() -> Distribution:
                     return Distribution.SUSE
                 case "debian":
                     match os_release_dict["ID"]:
-                        case "ubuntu" | "linuxmint" :
+                        case "ubuntu":
                             return Distribution.UBUNTU
                     return Distribution.DEBIAN
     else:
