@@ -6,7 +6,6 @@ from optimusui import const, os_utils
 Prime Select wrapper
 '''
 
-PRIME_BINS = ["prime-select", "fedora-prime-select"]
 PRIME_ROOT_PATHS = [
     "/usr/bin/",
     "/usr/sbin/",
@@ -16,6 +15,12 @@ PRIME_ROOT_PATHS = [
 
 prime_path = ""
 prime_features = []
+
+
+class PrimeTool(Enum):
+    PRIME_SELECT = "prime-select"
+    FEDORA_PRIME_SELECT = "fedora-prime-select"
+    NVIDIA_PRIME_SELECT = "nvidia-prime-select"
 
 
 class PrimeMode(Enum):
@@ -56,8 +61,8 @@ def get_current():
 def has_prime_select():
     global prime_path
     for root_path in PRIME_ROOT_PATHS:
-        for prime_tool in PRIME_BINS:
-            prime_path_full = root_path + prime_tool
+        for prime_tool in PrimeTool:
+            prime_path_full = root_path + prime_tool.value
             which_cmd = ["test", "-f", prime_path_full]
             which_result = os_utils.run_command(which_cmd)
             if which_result.returncode == 0:
@@ -89,14 +94,16 @@ def prime_select(mode: PrimeMode, boot: bool):
     os_utils.run_command_as_root_no_pipe(prime_command)
     return True
 
+
 def has_feature(feature: PrimeFeature):
     global prime_features
     return feature in prime_features
 
-def _build_features(prime_tool: str, distro: os_utils.Distribution):
+
+def _build_features(prime_tool: PrimeTool, distro: os_utils.Distribution):
     global prime_features
     match prime_tool:
-        case "prime-select":
+        case PrimeTool.PRIME_SELECT:
             match distro:
                 case os_utils.Distribution.SUSE:
                     prime_features.append(PrimeFeature.SET_BOOT)
@@ -105,7 +112,10 @@ def _build_features(prime_tool: str, distro: os_utils.Distribution):
                 case os_utils.Distribution.DEBIAN:
                     prime_features.append(PrimeFeature.SET_OFFLOAD)
                     prime_features.append(PrimeFeature.SET_RUNTIME)
-        case "fedora-prime-select":
+        case PrimeTool.FEDORA_PRIME_SELECT:
+            prime_features.append(PrimeFeature.SET_RUNTIME)
+        case PrimeTool.NVIDIA_PRIME_SELECT:
+            prime_features.append(PrimeFeature.SET_OFFLOAD)
             prime_features.append(PrimeFeature.SET_RUNTIME)
 
 
