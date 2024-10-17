@@ -14,6 +14,7 @@ class Distribution(Enum):
     SUSE = 0
     UBUNTU = 1
     DEBIAN = 2
+    FEDORA = 3
 
 
 class DisplayServer(Enum):
@@ -85,15 +86,20 @@ def get_distro() -> Distribution:
         column = line.split("=")
         if len(column) == 2:
             os_release_dict[column[0]] = column[1].replace("\"", "")
-    for id_like in os_release_dict["ID_LIKE"].split(" "):
-        match id_like:
-            case "opensuse" | "suse":
-                return Distribution.SUSE
-            case "debian":
-                match os_release_dict["ID"]:
-                    case "ubuntu":
-                        return Distribution.UBUNTU
-                return Distribution.DEBIAN
+    if not os_release_dict["ID_LIKE"] is None:
+        for id_like in os_release_dict["ID_LIKE"].split(" "):
+            match id_like:
+                case "opensuse" | "suse":
+                    return Distribution.SUSE
+                case "debian":
+                    match os_release_dict["ID"]:
+                        case "ubuntu":
+                            return Distribution.UBUNTU
+                    return Distribution.DEBIAN
+    else:
+        match os_release_dict["ID"]:
+            case "fedora":
+                return Distribution.FEDORA
     return Distribution.UNKNOWN
 
 
