@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 19:16+0200\n"
-"PO-Revision-Date: 2024-10-15 19:17+0200\n"
+"POT-Creation-Date: 2024-10-17 22:06+0200\n"
+"PO-Revision-Date: 2024-10-17 22:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -18,60 +18,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: optimusui/optimus_ui.py:52
+#: optimusui/optimus_ui.py:50
 msgid "System"
 msgstr "System"
 
-#: optimusui/optimus_ui.py:53
+#: optimusui/optimus_ui.py:51
 msgid "Various system settings"
 msgstr "Verschiedene Systemeinstellungen"
 
-#: optimusui/optimus_ui.py:62
+#: optimusui/optimus_ui.py:60
 msgid "Boot"
 msgstr "Boot"
 
-#: optimusui/optimus_ui.py:62
+#: optimusui/optimus_ui.py:60
 msgid "Set prime mode to be applied at boot"
 msgstr "Prime Modus der bei jedem Systemstart angewendet werden soll"
 
-#: optimusui/optimus_ui.py:66 optimusui/optimus_ui.py:88
+#: optimusui/optimus_ui.py:64 optimusui/optimus_ui.py:86
 msgid "nVidia"
 msgstr "nVidia"
 
-#: optimusui/optimus_ui.py:67 optimusui/optimus_ui.py:95
+#: optimusui/optimus_ui.py:65 optimusui/optimus_ui.py:94
 msgid "Offload"
 msgstr "Offload"
 
-#: optimusui/optimus_ui.py:68 optimusui/optimus_ui.py:102
-#: optimusui/optimus_ui.py:122
+#: optimusui/optimus_ui.py:66 optimusui/optimus_ui.py:101
+#: optimusui/optimus_ui.py:121
 msgid "Integrated"
 msgstr "Integriert"
 
-#: optimusui/optimus_ui.py:80
+#: optimusui/optimus_ui.py:78
 msgid "Runtime"
 msgstr "Laufzeit"
 
-#: optimusui/optimus_ui.py:81
+#: optimusui/optimus_ui.py:79
 msgid "Prime mode to be used while system is running"
 msgstr "Prime Modus der zur Laufzeit des Systems genutzt werden soll"
 
-#: optimusui/optimus_ui.py:112
+#: optimusui/optimus_ui.py:111
 msgid "Detected Graphic cards"
 msgstr "Erkannte Grafikkarten"
 
-#: optimusui/optimus_ui.py:114
+#: optimusui/optimus_ui.py:113
 msgid "OFF"
 msgstr "AUS"
 
-#: optimusui/optimus_ui.py:116
+#: optimusui/optimus_ui.py:115
 msgid "ON"
 msgstr "AN"
 
-#: optimusui/optimus_ui.py:120
+#: optimusui/optimus_ui.py:119
 msgid "Discrete"
 msgstr "Diskret"
 
-#: optimusui/optimus_ui.py:180
+#: optimusui/optimus_ui.py:179
 msgid ""
 "prime-select not found, please install it per your distributions "
 "documentation"
@@ -79,43 +79,19 @@ msgstr ""
 "prime-select nicht gefunden, bitte installieren Sie das Paket für Ihre "
 "Distribution"
 
-#: optimusui/optimus_ui.py:182
+#: optimusui/optimus_ui.py:181
 msgid "This systems seems not to have a supported nVidia GPU installed"
 msgstr "Dieses System scheint keine unterstütze nVidia Grafikkarte zu besitzen"
 
-#: optimusui/optimus_ui.py:183
+#: optimusui/optimus_ui.py:182
 msgid "System not supported"
 msgstr "System nicht unterstützt"
 
-#: optimusui/optimus_ui.py:193
-msgid "Notice"
-msgstr "Hinweis"
-
-#: optimusui/optimus_ui.py:195
-msgid ""
-"There is no known prime tool for this distribution. OptimusUI will operate "
-"on best guess."
-msgstr ""
-"Das prime tool für diese Distribution ist unbekannt. OptimusUI wird nach "
-"bestem wissen handeln."
-
-#: optimusui/optimus_ui.py:196
-msgid "Feel free to open up an issue for us to add support for this system."
-msgstr ""
-"Erstellen Sie gerne einen Fehlerbericht, damit wir dieses System "
-"unterstützen können."
-
-#: optimusui/optimus_ui.py:198 optimusui/optimus_ui.py:207
-#: optimusui/optimus_ui.py:216 optimusui/optimus_ui.py:230
-#: optimusui/optimus_ui.py:239 optimusui/optimus_ui.py:249
-msgid "Ok"
-msgstr "Okay"
-
-#: optimusui/optimus_ui.py:203 optimusui/optimus_ui.py:226
+#: optimusui/optimus_ui.py:192 optimusui/optimus_ui.py:215
 msgid "Success"
 msgstr "Erfolgreich"
 
-#: optimusui/optimus_ui.py:205
+#: optimusui/optimus_ui.py:194
 msgid ""
 "Driver was changed successfully. Please log out and in again for these "
 "changes to take effect."
@@ -123,11 +99,17 @@ msgstr ""
 "Treiber wurde erfolgreich gewechselt. Bitte Loggen Sie sich aus und wieder "
 "ein, damit die Änderungen übernommen werden können."
 
-#: optimusui/optimus_ui.py:212
+#: optimusui/optimus_ui.py:196 optimusui/optimus_ui.py:205
+#: optimusui/optimus_ui.py:219 optimusui/optimus_ui.py:228
+#: optimusui/optimus_ui.py:238
+msgid "Ok"
+msgstr "Okay"
+
+#: optimusui/optimus_ui.py:201
 msgid "Attention"
 msgstr "Achtung"
 
-#: optimusui/optimus_ui.py:214
+#: optimusui/optimus_ui.py:203
 msgid ""
 "The system was detected to run on Wayland. Running fully on nVidia is only "
 "supported on X11. Make sure to select X11 as display server while loging in."
@@ -137,7 +119,7 @@ msgstr ""
 "Sie sicher, dass Sie beim einloggen die X11 Umgebung für Ihren Desktop "
 "auswählen."
 
-#: optimusui/optimus_ui.py:228
+#: optimusui/optimus_ui.py:217
 msgid ""
 "Driver was changed successfully. The new prime mode will be applied on every "
 "boot."
@@ -145,11 +127,11 @@ msgstr ""
 "Treiber erfolgreich gewechselt. Der neue Prime Modus wird bei jedem "
 "Systemstart angewendet."
 
-#: optimusui/optimus_ui.py:235
+#: optimusui/optimus_ui.py:224
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: optimusui/optimus_ui.py:237
+#: optimusui/optimus_ui.py:226
 msgid ""
 "The operation has failed. Please check your system logs and report this "
 "error."
@@ -157,11 +139,11 @@ msgstr ""
 "Die Operation ist fehlgeschlagen. Bitte prüfen Sie die Systemprotokolle und "
 "erstellen Sie einen Fehlerbericht."
 
-#: optimusui/optimus_ui.py:245
+#: optimusui/optimus_ui.py:234
 msgid "bbswitch not found"
 msgstr "bbswitch konnte nicht gefunden werden"
 
-#: optimusui/optimus_ui.py:247
+#: optimusui/optimus_ui.py:236
 msgid ""
 "Advanced power management might not work as bbswitch was not found. The "
 "discrete GPU will probably stay on."
@@ -170,15 +152,15 @@ msgstr ""
 "nicht gefunden werden konnte. Die diskrete Grafikkarte bleibt möglicherweise "
 "eingeschaltet."
 
-#: optimusui/optimus_ui.py:262
+#: optimusui/optimus_ui.py:251
 msgid "About"
 msgstr "Über"
 
-#: optimusui/optimus_ui.py:305
+#: optimusui/optimus_ui.py:294
 msgid "translator-credits"
 msgstr "Vortex Acherontic https://github.com/VortexAcherontic"
 
-#: optimusui/optimus_ui.py:310
+#: optimusui/optimus_ui.py:299
 msgid ""
 "OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
 "It allows to switch between integrated, dedicated and offloading GPU mode. "
@@ -190,6 +172,21 @@ msgstr ""
 "integrierten, dedizierten und ausgelagerten Grafikkarten Modus. prime-select "
 "muss auf den Zielsystem installiert sein und wird nicht von dieser Anwendung "
 "bereitgestellt!"
+
+#~ msgid "Notice"
+#~ msgstr "Hinweis"
+
+#~ msgid ""
+#~ "There is no known prime tool for this distribution. OptimusUI will "
+#~ "operate on best guess."
+#~ msgstr ""
+#~ "Das prime tool für diese Distribution ist unbekannt. OptimusUI wird nach "
+#~ "bestem wissen handeln."
+
+#~ msgid "Feel free to open up an issue for us to add support for this system."
+#~ msgstr ""
+#~ "Erstellen Sie gerne einen Fehlerbericht, damit wir dieses System "
+#~ "unterstützen können."
 
 #~ msgid "Your distribution is not supported"
 #~ msgstr "Ihre Distribution wird leider nicht unterstützt"
