@@ -90,12 +90,13 @@ class MainWindow(Gtk.ApplicationWindow):
         toggle_nvidia.connect("toggled", self.on_toggle_nvidia)
         toggle_box.append(toggle_nvidia)
 
-        toggle_offload = Gtk.ToggleButton(label=_("Offload"), active=prime_mode == PrimeMode.OFFLOAD)
-        toggle_offload.set_group(toggle_nvidia)
-        if toggle_offload.get_active():
-            toggle_offload.add_css_class("suggested-action")
-        toggle_offload.connect("toggled", self.on_toggle_offload)
-        toggle_box.append(toggle_offload)
+        if os_utils.get_distro() != os_utils.Distribution.FEDORA:
+            toggle_offload = Gtk.ToggleButton(label=_("Offload"), active=prime_mode == PrimeMode.OFFLOAD)
+            toggle_offload.set_group(toggle_nvidia)
+            if toggle_offload.get_active():
+                toggle_offload.add_css_class("suggested-action")
+            toggle_offload.connect("toggled", self.on_toggle_offload)
+            toggle_box.append(toggle_offload)
 
         toggle_integrated = Gtk.ToggleButton(label=_("Integrated"), active=prime_mode == PrimeMode.INTEGRATED)
         toggle_integrated.set_group(toggle_nvidia)
