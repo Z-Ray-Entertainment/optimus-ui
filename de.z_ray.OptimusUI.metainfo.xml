@@ -16,17 +16,11 @@
             This is a graphical user interface for Laptops with nVidia Optimus Technology (eg. switchable Graphics).
         </p>
         <p>
-            This application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10 series
-            or older as these lack proper power management using the proprietary nvidia driver.
-        </p>
-        <p>
-            It allows the user to select which GPU driver should be used for the entire system. Like running entirely
-            on the iGPU (integrated graphics), entirely on de dGPU (nvidia) or in a hybrid offloading mode where the user
-            can offload certain task to the dGPU.
-        </p>
-        <p>
-            Keep in mind Pascal and older GPUs will not turn off in hybrid mode and still consume power even if they are
-            idle.
+            This application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10
+            series
+            or older as these lack proper power management using the proprietary nvidia driver. OptimusUI requires a
+            supported prime tool like SUSEPrime, nvidia-prime, fedora-prime-select or nvidia-prime-select to be
+            installed on the host system.
         </p>
     </description>
 
@@ -39,7 +33,7 @@
         <screenshot type="default">
             <caption>Main Window</caption>
             <image>
-
+                https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/tags/24.10.5/optimusui/data/screenshots/optimus_ui.png
             </image>
         </screenshot>
     </screenshots>
@@ -49,6 +43,14 @@
     <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
 
     <releases>
+        <release version="24.10.5" date="2024-10-17">
+            <description>
+                <ul>
+                    <li>Add screenshot to metainfo</li>
+                    <li>Bump version</li>
+                </ul>
+            </description>
+        </release>
         <release version="24.10.4" date="2024-10-17">
             <description>
                 <ul>
@@ -75,8 +77,11 @@
                     <li>Add de_DE translation</li>
                     <li>Hide various settings if the host prime tool does not support them</li>
                     <li>Added distribution check to better determine what prime tool to search for</li>
-                    <li>bbswitch check is now only done in integrated mode because in all other modes it is not loaded</li>
-                    <li>If the user chooses nvidia mode and is on Wayland a notice is displayed to switch to X11 for it to do anything</li>
+                    <li>bbswitch check is now only done in integrated mode because in all other modes it is not loaded
+                    </li>
+                    <li>If the user chooses nvidia mode and is on Wayland a notice is displayed to switch to X11 for it
+                        to do anything
+                    </li>
                     <li>Bug fixes</li>
                     <li>QOL improvements</li>
                 </ul>
