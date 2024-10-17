@@ -20,7 +20,7 @@ The following needs to be present on the target system:
 
 ## Supported Prime Tools
 
-- [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (openSUSE, Tumlbeweed, Leap, Aeon, Kalpa, Gecko Linux, Gecko Linux
+- [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (Tumbleweed, Leap, Aeon, Kalpa, Gecko Linux, Gecko Linux
   Rolling)
 - [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Ubuntu, Xubuntu, Lubuntu, Linux Mint,
   Kubuntu ...)
