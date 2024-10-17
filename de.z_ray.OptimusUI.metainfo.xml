@@ -49,6 +49,44 @@
     <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
 
     <releases>
+        <release version="24.10.4" date="2024-10-17">
+            <description>
+                <ul>
+                    <li>Bump version</li>
+                    <li>Updated metainfo</li>
+                    <li>Updated i18n tags</li>
+                </ul>
+            </description>
+        </release>
+        <release version="24.10.3" date="2024-10-17">
+            <description>
+                <ul>
+                    <li>Greatly improved distribution detection</li>
+                    <li>Greatly improved feature check for detected prime tools</li>
+                    <li>Added support for fedora-prime select</li>
+                    <li>Added support for nvidia-prime-select</li>
+                </ul>
+            </description>
+        </release>
+        <release version="24.10.2" date="2024-10-15">
+            <description>
+                <ul>
+                    <li>Finished up i18n support</li>
+                    <li>Add de_DE translation</li>
+                    <li>Hide various settings if the host prime tool does not support them</li>
+                    <li>Added distribution check to better determine what prime tool to search for</li>
+                    <li>bbswitch check is now only done in integrated mode because in all other modes it is not loaded</li>
+                    <li>If the user chooses nvidia mode and is on Wayland a notice is displayed to switch to X11 for it to do anything</li>
+                    <li>Bug fixes</li>
+                    <li>QOL improvements</li>
+                </ul>
+            </description>
+        </release>
+        <release version="24.10.1" date="2024-10-11">
+            <description>
+                <p>Improved user interface</p>
+            </description>
+        </release>
         <release version="24.10" date="2024-10-7">
             <description>
                 <p>Initial release</p>
