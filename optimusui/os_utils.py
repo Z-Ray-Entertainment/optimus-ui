@@ -12,9 +12,8 @@ FLATPAK_SPAWN = ["flatpak-spawn", "--host"]
 class Distribution(Enum):
     UNKNOWN = -1
     SUSE = 0
-    UBUNTU = 1
-    DEBIAN = 2
-    FEDORA = 3
+    DEBIAN = 1
+    FEDORA = 2
 
 
 class DisplayServer(Enum):
@@ -92,14 +91,13 @@ def get_distro() -> Distribution:
                 case "opensuse" | "suse":
                     return Distribution.SUSE
                 case "debian":
-                    match os_release_dict["ID"]:
-                        case "ubuntu":
-                            return Distribution.UBUNTU
                     return Distribution.DEBIAN
     else:
         match os_release_dict["ID"]:
             case "fedora":
                 return Distribution.FEDORA
+            case "debian":
+                return Distribution.DEBIAN
     return Distribution.UNKNOWN
 
 
