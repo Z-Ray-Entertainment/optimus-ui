@@ -18,31 +18,15 @@ The following needs to be present on the target system:
 - suse-prime or nvidia-prime
 - bbswitch (Recommended but not required)
 
-## Supported Distributions
+## Supported Prime Tools
 
-### openSUSE
-
-This includes openSUSE Leap, Tumbleweed, MicroOS, Aeon, Kalpa, Gecko Linux and Gecko Linux Rolling.  
-For openSUSE based distributions please install [SUSEPrime](https://github.com/openSUSE/SUSEPrime)
-
-### Ubuntu
-
-This includes Ubuntu, Kubuntu, Lubuntu, Xubuntu, Linux Mint (Ubuntu Edition), Pop_OS and many more.
-For Ubuntu based distributions please install [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/)
-
-**Note:** While Ubuntu is supported the prime tool does lack some features and therefore some options are not available.
-
-## WIP Distributions
-
-- Fedora via fedora-prime-select
-- Arch Linux via nvidia-prime-select
-
-## Unsupported distributions
-
-### Debian
-
-Debian has no nvidia-prime, suse-prime or prime-select like package which can be supported by this application
-Source: https://debianforum.de/forum/viewtopic.php?t=188303#p1344248
+- [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (openSUSE, Tumlbeweed, Leap, Aeon, Kalpa, Gecko Linux, Gecko Linux
+  Rolling)
+- [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Ubuntu, Xubuntu, Lubuntu, Linux Mint,
+  Kubuntu ...)
+- [fedora-prime-select](https://github.com/bosim/FedoraPrime/blob/master/fedora-prime-select) (Fedora, Nobara)
+- [nvidia-prime-select](https://github.com/wildtruc/nvidia-prime-select) (Fedora, Arch Linux, ChimeraOS, CatchyOS,
+  EndeavourOS ...)
 
 # Tested configurations:
 
