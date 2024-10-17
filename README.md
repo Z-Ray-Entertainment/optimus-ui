@@ -23,7 +23,7 @@ The following needs to be present on the target system:
 - [SUSEPrime](https://github.com/openSUSE/SUSEPrime) (Tumbleweed, Leap, Aeon, Kalpa, Gecko Linux, Gecko Linux
   Rolling)
 - [nvidia-prime](https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/PRIME/) (Ubuntu, Xubuntu, Lubuntu, Linux Mint,
-  Kubuntu ...)
+  Kubuntu, ZorinOS, VanillaOS ...)
 - [fedora-prime-select](https://github.com/bosim/FedoraPrime/blob/master/fedora-prime-select) (Fedora, Nobara)
 - [nvidia-prime-select](https://github.com/wildtruc/nvidia-prime-select) (Fedora, Arch Linux, ChimeraOS, CatchyOS,
   EndeavourOS ...)
