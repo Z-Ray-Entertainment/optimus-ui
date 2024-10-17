@@ -8,6 +8,7 @@ Various OS and flatpak related utilities
 
 FLATPAK_SPAWN = ["flatpak-spawn", "--host"]
 
+
 class Distribution(Enum):
     UNKNOWN = -1
     SUSE = 0
@@ -20,7 +21,16 @@ class DisplayServer(Enum):
     X11 = 0
     WAYLAND = 1
 
+
+class SudoTool(Enum):
+    PKEXEC = "pkexec"
+    KDESU = "kdesu"
+
+
+sudo_tool = SudoTool.PKEXEC.value
+
 detected_distro = Distribution.UNKNOWN
+
 
 def get_display_server() -> DisplayServer:
     """
@@ -55,11 +65,11 @@ def run_command_no_pipe(base_command: []):
 
 
 def run_command_as_root_no_pipe(base_commad: []):
-    return run_command_no_pipe(["pkexec"] + base_commad)
+    return run_command_no_pipe([sudo_tool] + base_commad)
 
 
 def run_command_as_root(base_commad: []):
-    return run_command(["pkexec"] + base_commad)
+    return run_command([sudo_tool] + base_commad)
 
 
 def run_command(base_command: []):
