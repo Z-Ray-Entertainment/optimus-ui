@@ -28,12 +28,15 @@ class PrimeMode(Enum):
     OFFLOAD = 1
     INTEGRATED = 2
     NO_DRIVER = 3
+    DEFAULT = 4
 
 
 class PrimeFeature(Enum):
     SET_BOOT = 0
-    SET_RUNTIME = 1
-    SET_OFFLOAD = 2
+    SET_INTEGRATED = 1
+    SET_NVIDIA = 2
+    SET_OFFLOAD = 3
+    SET_DEFAULT = 4
 
 
 def get_boot():
@@ -91,6 +94,8 @@ def prime_select(mode: PrimeMode, boot: bool):
                     prime_command += ["offload"]
         case PrimeMode.INTEGRATED:
             prime_command += ["intel"]
+        case PrimeMode.DEFAULT:
+            prime_command += ["default"]
     os_utils.run_command_as_root_no_pipe(prime_command)
     return True
 
@@ -108,15 +113,15 @@ def _build_features(prime_tool: PrimeTool, distro: os_utils.Distribution):
                 case os_utils.Distribution.SUSE:
                     prime_features.append(PrimeFeature.SET_BOOT)
                     prime_features.append(PrimeFeature.SET_OFFLOAD)
-                    prime_features.append(PrimeFeature.SET_RUNTIME)
+                    prime_features.append(PrimeFeature.SET_NVIDIA)
+                    prime_features.append(PrimeFeature.SET_INTEGRATED)
                 case os_utils.Distribution.DEBIAN:
                     prime_features.append(PrimeFeature.SET_OFFLOAD)
-                    prime_features.append(PrimeFeature.SET_RUNTIME)
-        case PrimeTool.FEDORA_PRIME_SELECT:
-            prime_features.append(PrimeFeature.SET_RUNTIME)
-        case PrimeTool.NVIDIA_PRIME_SELECT:
-            prime_features.append(PrimeFeature.SET_OFFLOAD)
-            prime_features.append(PrimeFeature.SET_RUNTIME)
+                    prime_features.append(PrimeFeature.SET_NVIDIA)
+                    prime_features.append(PrimeFeature.SET_INTEGRATED)
+        case PrimeTool.FEDORA_PRIME_SELECT | PrimeTool.NVIDIA_PRIME_SELECT:
+            prime_features.append(PrimeFeature.SET_NVIDIA)
+            prime_features.append(PrimeFeature.SET_INTEGRATED)
 
 
 def _get_current():
