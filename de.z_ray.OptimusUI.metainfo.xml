@@ -43,6 +43,16 @@
     <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
 
     <releases>
+        <release version="24.10.6" date="2024-10-18">
+            <description>
+                <ul>
+                    <li>Fixed a potential issue with nvidia-prime-select and fedora-prime-select while receiving the
+                        current driver mode. They do not support this action.
+                    </li>
+                    <li>Bump version</li>
+                </ul>
+            </description>
+        </release>
         <release version="24.10.5" date="2024-10-17">
             <description>
                 <ul>
