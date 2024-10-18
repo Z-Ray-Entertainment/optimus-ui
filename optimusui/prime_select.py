@@ -37,6 +37,7 @@ class PrimeFeature(Enum):
     SET_NVIDIA = 2
     SET_OFFLOAD = 3
     SET_DEFAULT = 4
+    GET_CURRENT = 5
 
 
 def get_boot():
@@ -48,16 +49,17 @@ def get_boot():
 
 
 def get_current():
-    match os_utils.get_distro():
-        case os_utils.Distribution.SUSE:
-            prime_time = _get_current().split("\n")
-            if len(prime_time) < 2:
-                return PrimeMode.NO_DRIVER
-            driver = prime_time[0].split(":")
-            return _text_to_prime_mode(driver[1].strip())
-        case os_utils.Distribution.DEBIAN:
-            prime_time = _get_current()
-            return _text_to_prime_mode(prime_time)
+    if PrimeFeature.GET_CURRENT in prime_features:
+        match os_utils.get_distro():
+            case os_utils.Distribution.SUSE:
+                prime_time = _get_current().split("\n")
+                if len(prime_time) < 2:
+                    return PrimeMode.NO_DRIVER
+                driver = prime_time[0].split(":")
+                return _text_to_prime_mode(driver[1].strip())
+            case os_utils.Distribution.DEBIAN:
+                prime_time = _get_current()
+                return _text_to_prime_mode(prime_time)
     return PrimeMode.NO_DRIVER
 
 
@@ -115,10 +117,12 @@ def _build_features(prime_tool: PrimeTool, distro: os_utils.Distribution):
                     prime_features.append(PrimeFeature.SET_OFFLOAD)
                     prime_features.append(PrimeFeature.SET_NVIDIA)
                     prime_features.append(PrimeFeature.SET_INTEGRATED)
+                    prime_features.append(PrimeFeature.GET_CURRENT)
                 case os_utils.Distribution.DEBIAN:
                     prime_features.append(PrimeFeature.SET_OFFLOAD)
                     prime_features.append(PrimeFeature.SET_NVIDIA)
                     prime_features.append(PrimeFeature.SET_INTEGRATED)
+                    prime_features.append(PrimeFeature.GET_CURRENT)
         case PrimeTool.FEDORA_PRIME_SELECT | PrimeTool.NVIDIA_PRIME_SELECT:
             prime_features.append(PrimeFeature.SET_NVIDIA)
             prime_features.append(PrimeFeature.SET_INTEGRATED)
