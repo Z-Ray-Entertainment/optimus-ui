@@ -10,7 +10,7 @@
         <color type="primary" scheme_preference="light">#241f31</color>
         <color type="primary" scheme_preference="dark">#613583</color>
     </branding>
-    <summary>Graphical interface for nVidia Optimus Laptops</summary>
+    <summary>Interface for nVidia Optimus</summary>
     <description>
         <p>
             This is a graphical user interface for Laptops with nVidia Optimus Technology (eg. switchable Graphics).
