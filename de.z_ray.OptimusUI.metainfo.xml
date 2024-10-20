@@ -42,6 +42,14 @@
     <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
 
     <releases>
+        <release version="24.10.7" date="2024-10-20">
+            <description>
+                <ul>
+                    <li>Shortened summary</li>
+                    <li>Update description</li>
+                </ul>
+            </description>
+        </release>
         <release version="24.10.6" date="2024-10-18">
             <description>
                 <ul>
