@@ -16,9 +16,8 @@
             This is a graphical user interface for Laptops with nVidia Optimus Technology (eg. switchable Graphics).
         </p>
         <p>
-            This application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10
-            series
-            or older as these lack proper power management using the proprietary nvidia driver. OptimusUI requires a
+            The application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10
+            series or older as these lack proper power management using the proprietary nvidia driver. OptimusUI requires a
             supported prime tool like SUSEPrime, nvidia-prime, fedora-prime-select or nvidia-prime-select to be
             installed on the host system.
         </p>
