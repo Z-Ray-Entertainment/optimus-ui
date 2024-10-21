@@ -78,7 +78,6 @@ def run_command(base_command: []):
     If the app is running inside flatpak it will use flatpak-spawn
     """
     if is_flatpak():
-        print(base_command)
         return subprocess.run(FLATPAK_SPAWN + base_command, stdout=subprocess.PIPE)
     return subprocess.run(base_command, stdout=subprocess.PIPE)
 
