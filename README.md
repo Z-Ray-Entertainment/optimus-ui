@@ -8,8 +8,6 @@ running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 
 ![OptimusUI](https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/heads/main/optimusui/data/screenshots/optimus_ui.png)
 
-[![Get it on Flathub](https://flathub.org/api/badge?svg&locale=en)](https://flathub.org/apps/de.z_ray.OptimusUI)
-
 ## Requirements
 
 This application aims to be as simple as possible. this also includes it's dependencies.  
@@ -29,6 +27,9 @@ The following needs to be present on the target system:
 - [fedora-prime-select](https://github.com/bosim/FedoraPrime/blob/master/fedora-prime-select) (Fedora, Nobara)
 - [nvidia-prime-select](https://github.com/wildtruc/nvidia-prime-select) (Fedora, Arch Linux, ChimeraOS, CatchyOS,
   EndeavourOS ...)
+
+# Installation
+[![Get it on Flathub](https://flathub.org/api/badge?svg&locale=en)](https://flathub.org/apps/de.z_ray.OptimusUI)
 
 # Tested configurations:
 
