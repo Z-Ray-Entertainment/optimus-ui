@@ -39,7 +39,20 @@
 
     <url type="homepage">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
     <url type="vcs-browser">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
-    <url type="help">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
+    <url type="bugtracker">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
+    <url type="contribute">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
+    <url type="translate">https://github.com/Z-Ray-Entertainment/optimus-ui/tree/main/optimusui/data/po</url>
+
+    <requires>
+        <display_length compare="ge">360</display_length>
+        <internet>offline-only</internet>
+    </requires>
+
+    <supports>
+        <control>keyboard</control>
+        <control>pointing</control>
+        <control>touch</control>
+    </supports>
 
     <releases>
         <release version="24.10.7" date="2024-10-21">
