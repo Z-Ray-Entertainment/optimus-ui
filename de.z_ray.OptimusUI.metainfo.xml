@@ -32,16 +32,16 @@
         <screenshot type="default">
             <caption>Main Window</caption>
             <image>
-                https://raw.githubusercontent.com/Z-Ray-Entertainment/optimus-ui/refs/tags/24.10.7/optimusui/data/screenshots/optimus_ui.png
+                https://codeberg.org/ZRayEntertainment/optimus-ui/raw/tag/24.10.7/optimusui/data/screenshots/optimus_ui.png
             </image>
         </screenshot>
     </screenshots>
 
-    <url type="homepage">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
-    <url type="vcs-browser">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
-    <url type="bugtracker">https://github.com/Z-Ray-Entertainment/optimus-ui/issues</url>
-    <url type="contribute">https://github.com/Z-Ray-Entertainment/optimus-ui</url>
-    <url type="translate">https://github.com/Z-Ray-Entertainment/optimus-ui/tree/main/optimusui/data/po</url>
+    <url type="homepage">https://codeberg.org/ZRayEntertainment/optimus-ui</url>
+    <url type="vcs-browser">https://codeberg.org/ZRayEntertainment/optimus-ui</url>
+    <url type="bugtracker">https://codeberg.org/ZRayEntertainment/optimus-ui/issues</url>
+    <url type="contribute">https://codeberg.org/ZRayEntertainment/optimus-ui</url>
+    <url type="translate">https://codeberg.org/ZRayEntertainment/optimus-ui/src/branch/main/optimusui/data/po</url>
 
     <requires>
         <display_length compare="ge">360</display_length>

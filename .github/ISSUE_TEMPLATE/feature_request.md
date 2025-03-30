@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 > [!IMPORTANT]  
-> Please take a look at the [FAQ](https://github.com/Z-Ray-Entertainment/optimus-ui/wiki/FAQ) before opening up a feature request
+> Please take a look at the [FAQ](https://codeberg.org/ZRayEntertainment/optimus-ui/wiki/FAQ) before opening up a feature request
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]

@@ -158,7 +158,7 @@ msgstr "Über"
 
 #: optimusui/optimus_ui.py:294
 msgid "translator-credits"
-msgstr "Vortex Acherontic https://github.com/VortexAcherontic"
+msgstr "Vortex Acherontic https://codeberg.org/vortex_acherontic"
 
 #: optimusui/optimus_ui.py:299
 msgid ""

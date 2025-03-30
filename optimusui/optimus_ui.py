@@ -286,15 +286,15 @@ class OptimusUI(Adw.Application):
             developer_name="Z-Ray Entertainment",
             version=const.VERSION,
             developers=[
-                "Vortex Acherontic https://github.com/VortexAcherontic",
+                "Vortex Acherontic https://codeberg.org/vortex_acherontic",
             ],
             artists=[
-                "Vortex Acherontic https://github.com/VortexAcherontic",
+                "Vortex Acherontic https://codeberg.org/vortex_acherontic",
             ],
             translator_credits=_("translator-credits"),
             license_type=Gtk.License.MIT_X11,
-            website="https://github.com/Z-Ray-Entertainment/optimus-ui",
-            issue_url="https://github.com/Z-Ray-Entertainment/optimus-ui/issues",
+            website="https://codeberg.org/ZRayEntertainment/optimus-ui",
+            issue_url="https://codeberg.org/ZRayEntertainment/optimus-ui/issues",
             comments=_(
                 "OptimusUI is a user interface for prime-select for nVidia Optimus Laptops. "
                 "It allows to switch between integrated, dedicated and offloading GPU mode. "
