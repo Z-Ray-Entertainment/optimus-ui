@@ -55,6 +55,16 @@
     </supports>
 
     <releases>
+        <release version="25.3" date="2025-03-30">
+            <description>
+                <ul>
+                    <li>Gnome SDK 48</li>
+                    <li>Moved source hoster</li>
+                    <li>Various metadata updates (thanks Brage Fuglseth)</li>
+                    <li>Updated icon</li>
+                </ul>
+            </description>
+        </release>
         <release version="24.10.7" date="2024-10-21">
             <description>
                 <ul>
