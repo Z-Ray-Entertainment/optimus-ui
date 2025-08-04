@@ -37,7 +37,11 @@ The following needs to be present on the target system:
 
 Note: This means any openSUSE based distribution should work as well
 
-- SUSEPrime 0.8.17
-- nVidia driver 470.256.02
+- SUSEPrime
+  - 0.8.17
+  - 0.8.18
+- nVidia driver
+  - 470.256.02
+  - 470.239.06
 - Intel i5-3230M
 - nVidia GeForce GT 730M
