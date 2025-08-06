@@ -25,7 +25,7 @@ class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.test_system_config()
-        if system_validator.is_system_supported():
+        if system_validator.is_prime_supported():
             self.set_title(const.APP_NAME)
             self._build_title_bar()
             self.main_box = None
@@ -172,7 +172,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.show_prime_error()
 
     def test_system_config(self):
-        if not system_validator.is_system_supported():
+        if not system_validator.is_prime_supported():
             message_text = ""
             if not prime_select.has_prime_select():
                 message_text += "• " + _(
@@ -273,7 +273,7 @@ class OptimusUI(Adw.Application):
 
     def on_activate(self, app):
         self.win = MainWindow(application=app)
-        if system_validator.is_system_supported():
+        if system_validator.is_prime_supported():
             self.win.present()
 
     def on_close(self, app):

@@ -12,8 +12,11 @@ pkgdatadir = '@pkgdatadir@'
 if environ.get("FLATPAK_ID") is not None:
     sys.path.insert(1, pkgdatadir)
 
-from optimusui import const
+from optimusui import const, system_validator
 from optimusui.optimus_ui import OptimusUI
 
 if __name__ == '__main__':
-    OptimusUI(application_id=const.APP_ID).run(sys.argv)
+    if system_validator.is_system_using_nouveau():
+        pass
+    elif system_validator.is_prime_supported():
+        OptimusUI(application_id=const.APP_ID).run(sys.argv)

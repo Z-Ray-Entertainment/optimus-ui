@@ -31,6 +31,8 @@ sudo_tool = SudoTool.PKEXEC.value
 
 detected_distro = Distribution.UNKNOWN
 
+def get_gpu_driver() -> str:
+    lsmod = run_command(["lsmod"])
 
 def get_display_server() -> DisplayServer:
     """
