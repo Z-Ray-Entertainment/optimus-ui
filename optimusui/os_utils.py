@@ -25,12 +25,21 @@ class DisplayServer(Enum):
 class SudoTool(Enum):
     PKEXEC = "pkexec"
     KDESU = "kdesu"
-
-
-sudo_tool = SudoTool.PKEXEC.value
+    UNSUPPORTED = "UNKNOWN"
 
 detected_distro = Distribution.UNKNOWN
 
+def get_sudo_tool() -> SudoTool:
+    if has_command("/usr/bin/pkexec"):
+        return SudoTool.PKEXEC
+    if has_command("/usr/bin/kdesu"):
+        return SudoTool.KDESU
+    return SudoTool.UNSUPPORTED
+
+def has_command(command: str) -> bool:
+    command_result = run_command(["test", "-f", command])
+    print(command_result)
+    return command_result.returncode == 0
 
 def get_display_server() -> DisplayServer:
     """
@@ -64,8 +73,11 @@ def run_command_no_pipe(base_command: []):
     return subprocess.run(base_command)
 
 
-def run_command_as_root_no_pipe(base_commad: []):
-    return run_command_no_pipe([sudo_tool] + base_commad)
+def run_command_as_root_no_pipe(base_command: []):
+    if sudo_tool == "kdesu":
+        return run_command_no_pipe([sudo_tool, "-c"] + base_command)
+    else:
+        return run_command_no_pipe([sudo_tool] + base_command)
 
 
 def run_command_as_root(base_commad: []):
@@ -111,3 +123,5 @@ def get_distro() -> Distribution:
             case "debian":
                 detected_distro = Distribution.DEBIAN
     return detected_distro
+
+sudo_tool = get_sudo_tool().value
