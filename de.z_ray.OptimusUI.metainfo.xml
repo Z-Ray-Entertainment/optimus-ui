@@ -55,6 +55,20 @@
     </supports>
 
     <releases>
+      <release version="25.8.2" date="2025-08-12">
+            <description>
+                <ul>
+                    <li>Added nl_NL locales</li>
+                </ul>
+            </description>
+        </release>
+      <release version="25.8.1" date="2025-08-12">
+            <description>
+                <ul>
+                    <li>Update Metainfo</li>
+                </ul>
+            </description>
+        </release>
         <release version="25.8" date="2025-08-12">
             <description>
                 <ul>
