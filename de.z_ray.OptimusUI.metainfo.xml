@@ -55,6 +55,15 @@
     </supports>
 
     <releases>
+        <release version="25.8" date="2025-08-12">
+            <description>
+                <ul>
+                    <li>Packaging updates</li>
+                    <li>Added support for kdesu</li>
+                    <li>Improved sudo tool detection</li>
+                </ul>
+            </description>
+        </release>
         <release version="25.3" date="2025-03-30">
             <description>
                 <ul>
