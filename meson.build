@@ -1,5 +1,5 @@
 project('optimusui',
-  version: '24.10.7',
+  version: '25.8.2',
   meson_version: '>= 0.62.0',
   default_options: ['warning_level=2', 'werror=false'],
 )
