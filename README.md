@@ -8,4 +8,4 @@ running entirely on the dGPU, the iGPU or using nVidia's Offloading technology.
 
 ![OptimusUI](https://codeberg.org/ZRayEntertainment/optimus-ui/raw/branch/main/optimusui/data/screenshots/optimus_ui.png)
 
-Documentation is available here: [https://docs.z-ray.de/docs/optimusui/](https://docs.z-ray.de/docs/optimusui/)
+Documentation is available here: [https://docs.z-ray.de/zray-soft/optimusui/](https://docs.z-ray.de/zray-soft/optimusui/)
