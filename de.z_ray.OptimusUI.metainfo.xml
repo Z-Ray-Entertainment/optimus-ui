@@ -17,7 +17,8 @@
         </p>
         <p>
             The application is most useful on older nvidia GPUs featuring the Pascal micro architecture like GTX 10
-            series or older as these lack proper power management using the proprietary nvidia driver. OptimusUI requires a
+            series or older as these lack proper power management using the proprietary nvidia driver. OptimusUI
+            requires a
             supported prime tool like SUSEPrime, nvidia-prime, fedora-prime-select or nvidia-prime-select to be
             installed on the host system.
         </p>
@@ -55,14 +56,21 @@
     </supports>
 
     <releases>
-      <release version="25.8.2" date="2025-08-12">
+        <release version="25.10" date="2025-10-22">
+            <description>
+                <ul>
+                    <li>Update to Gnome SDK 49</li>
+                </ul>
+            </description>
+        </release>
+        <release version="25.8.2" date="2025-08-12">
             <description>
                 <ul>
                     <li>Added nl_NL locales</li>
                 </ul>
             </description>
         </release>
-      <release version="25.8.1" date="2025-08-12">
+        <release version="25.8.1" date="2025-08-12">
             <description>
                 <ul>
                     <li>Update Metainfo</li>
